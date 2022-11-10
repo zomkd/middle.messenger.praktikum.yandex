@@ -1,0 +1,17 @@
+include ./user-chats/user-chats.pug
+
+aside.sidebar
+    script(type="module" src='~/src/modules/chat/components/sidebar/sidebar.ts')
+
+    header.sidebar__header
+        div.sidebar__header-profile
+            div.sidebar__header-profile-block
+                div.sidebar__header-profile-block-text Профиль
+                i.sidebar__header-profile-block-arrow
+        div.sidebar__header-search
+            div.sidebar__header-search-block
+                div.sidebar__header-search-block-icon <img src = "~/src/assets/icons/lens-icon.svg" alt="lens-icon"/>
+                div.sidebar__header-search-block-text Поиск
+    section.user-chats
+        +user-chats-mixin()
+        +user-chats-mixin()

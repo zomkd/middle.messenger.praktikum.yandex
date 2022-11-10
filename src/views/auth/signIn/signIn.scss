@@ -1,0 +1,40 @@
+.sign-in {
+  height: 28.125rem;
+  width: 21.25rem;
+  left: 29.375rem;
+  top: 8.4375rem;
+  border-radius: 0.75rem;
+  box-shadow: 0rem 0rem 0.375rem rgba(0, 0, 0, 0.14);
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+
+    &-title {
+      font-weight: 500;
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+      color: #1e1e1e;
+    }
+
+    &-login-input {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3rem;
+      height: 4.5rem;
+      justify-content: space-between;
+    }
+
+    &-auth-btn {
+      max-width: 17.5rem;
+      width: 100%;
+      margin-top: 11rem;
+    }
+
+    &-sign-up {
+      margin-top: 0.5rem;
+    }
+  }
+}

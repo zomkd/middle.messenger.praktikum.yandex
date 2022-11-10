@@ -1,0 +1,5 @@
+mixin input-mixin(name)
+    script(type='module' src='~/src/components/inputs/input-mixin.ts')
+    div.input
+        label(class='input__label')= name
+        input(type='' name=`${name}` class=`input__field ${name}` placeholder='' required autofocus)

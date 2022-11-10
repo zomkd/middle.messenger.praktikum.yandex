@@ -1,0 +1,23 @@
+.input {
+  width: 17.5rem;
+  height: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  line-height: 13px;
+
+  &__field {
+    border: 0;
+    border-bottom: 0.0625rem #3369f3 solid;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    font-size: 0.5625rem;
+    line-height: 0.5625rem;
+    color: #999999;
+  }
+}

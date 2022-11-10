@@ -1,0 +1,26 @@
+.main-chat-bottom__block {
+  display: flex;
+  align-items: center;
+  margin-right: 1.25rem;
+  margin-left: 1.25rem;
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+}
+
+.main-chat-bottom__items {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.main-chat-bottom__message-panel {
+  width: 90%;
+  background: #efefef;
+  display: flex;
+  align-items: center;
+  border-radius: 1.875rem;
+
+  &_text {
+    margin-left: 1rem;
+  }
+}

@@ -1,0 +1,19 @@
+mixin profile-card-mixin()
+    script(type="module" src='~/src/components/profile-card/profile-card-mixin.ts')
+    include ../inputs/profile-inputs/profile-input-mixin.pug
+    
+    section.profile-card
+        .profile-card__user-info
+            .profile-card__user-info__avatar 
+            .profile-card__user-info__name Unknown
+
+        .profile-card__fields 
+            +profile-input-mixin('title','body')
+            +profile-input-mixin('title','body')
+            +profile-input-mixin('title','body')
+            +profile-input-mixin('title','body')
+        
+        .profile-card__actions
+            +profile-input-mixin('title')
+            +profile-input-mixin('title')
+            +profile-input-mixin('title')

@@ -1,0 +1,7 @@
+extends ../../layouts/chat-layout/chat-layout.pug
+
+block chat
+    script(type="module" src='~/src/views/chat/chat.ts')
+    include ../../modules/chat/components/sidebar/sidebar.pug
+    include ../../modules/chat/components/main-chat/main-chat.pug
+    

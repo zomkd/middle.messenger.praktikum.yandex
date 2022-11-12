@@ -1,21 +1,10 @@
 @use 'normalize.css';
-@use 'fonts';
-
-// #app {
-//     // Colors
-//     --color-primary: #3369F3;
-//     // --color-primary-active: #1e33cc;
-//     --color-dark: #1E1E1E;
-//     // --el-text-color-primary: #2c2c30;
-//     // --color-gray: #c9c9cf;
-//     // --color-bg-button: #f4f4f6;
-//     // --color-dark-gray: #72727a;
-//   }
+@import 'colors';
 
 html {
   overflow-x: hidden;
   overflow-y: scroll;
-  color: #1e1e1e;
+  color: $color-dark;
   font-weight: 400;
   font-size: 16px;
   font-family: Inter, sans-serif;

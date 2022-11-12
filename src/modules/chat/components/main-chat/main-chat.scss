@@ -1,3 +1,7 @@
+@import './main-chat-header/main-chat-header';
+@import './main-chat-bottom/main-chat-bottom';
+@import './main-chat-dialogs/main-chat-dialogs';
+
 .main-chat {
   display: flex;
   flex-direction: column;

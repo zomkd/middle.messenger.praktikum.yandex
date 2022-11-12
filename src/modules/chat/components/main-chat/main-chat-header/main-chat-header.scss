@@ -1,3 +1,5 @@
+@import '../../../../../assets/styles/colors';
+
 .main-chat-header__block {
   display: flex;
   align-items: center;
@@ -5,7 +7,7 @@
   margin-left: 1.25rem;
   width: 100%;
   height: 100%;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid $color-border;
 }
 
 .main-chat-header__items {
@@ -18,14 +20,14 @@
   align-items: center;
 }
 
-.main-chat-header__user-info__icon {
+.main-chat-header__icon {
   width: 2.125rem;
   height: 2.125rem;
-  background: #efefef;
+  background: $color-bg-avatar;
   border-radius: 50%;
 }
 
-.main-chat-header__user-info__name {
+.main-chat-header__name {
   margin-left: 0.5rem;
   font-weight: 600;
   font-size: 0.8125rem;
@@ -45,6 +47,6 @@
 .main-chat-header__user-action-dot {
   width: 0.1875rem;
   height: 0.1875rem;
-  background: #1e1e1e;
+  background: $color-dark;
   border-radius: 50%;
 }

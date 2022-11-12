@@ -1,10 +1,12 @@
+@import '../../../assets/styles/colors';
+
 .profile-card__field {
   max-width: 31.875rem;
   width: 100%;
   max-height: 2.0625rem;
   height: 100%;
   display: flex;
-  border-bottom: 1px #eaeaea solid;
+  border-bottom: 1px $color-border solid;
   align-items: center;
 
   &__title {
@@ -15,9 +17,18 @@
 
   &__body {
     margin-left: auto;
+    border: 0;
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #999999;
+    color: $color-dark-gray;
   }
+}
+
+.update {
+  color: $color-primary;
+}
+
+.exit {
+  color: $color-red;
 }

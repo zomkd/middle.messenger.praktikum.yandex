@@ -1,10 +1,12 @@
+@import '../../../../../assets/styles/colors';
+
 .main-chat-bottom__block {
   display: flex;
   align-items: center;
   margin-right: 1.25rem;
   margin-left: 1.25rem;
   width: 100%;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid $color-border;
 }
 
 .main-chat-bottom__items {
@@ -14,8 +16,10 @@
 }
 
 .main-chat-bottom__message-panel {
-  width: 90%;
-  background: #efefef;
+  width: 95%;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  background: $color-bg-avatar;
   display: flex;
   align-items: center;
   border-radius: 1.875rem;

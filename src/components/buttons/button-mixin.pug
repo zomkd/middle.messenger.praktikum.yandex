@@ -1,3 +1,2 @@
-mixin button-mixin(content)
-    script(type='module' src='~/src/components/buttons/button-mixin.ts')
-    button(type='submit' class='form-button')= content
+mixin button-mixin(type, btn_class, content)
+    button(type=type || 'submit' class=`form-button ${btn_class}`)= content

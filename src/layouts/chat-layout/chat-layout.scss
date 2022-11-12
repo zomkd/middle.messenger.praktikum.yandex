@@ -1,3 +1,7 @@
+@import '../../assets/styles/base';
+@import '../../modules/chat/components/sidebar/sidebar';
+@import '../../modules/chat/components/main-chat/main-chat';
+
 .chat-layout {
   display: flex;
   width: 100%;

@@ -1,8 +1,7 @@
-link(rel='stylesheet', href='~/src/assets/styles/base.scss')
 script(type='module' src='~/src/layouts/profile-layout/profile-layout.ts')
 .profile-layout
     section.profile-layout__sidebar
-        .profile-layout__sidebar--btn  <img src = "~/src/assets/icons/send-icon.svg" alt="send-icon"/>
-    
+        a(href='/').profile-layout__sidebar-btn  <img src = "~/src/assets/icons/send-icon.svg" alt="send-icon"/> </a>
+
     section.profile-layout__main
         block profile-card

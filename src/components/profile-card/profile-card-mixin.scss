@@ -1,3 +1,5 @@
+@import '../../assets/styles/colors';
+
 .profile-card {
   max-width: 31.875rem;
   max-height: 40rem;
@@ -18,25 +20,36 @@
     justify-content: space-between;
     align-items: center;
 
-    &__avatar {
+    &-avatar {
       width: 8.125rem;
       height: 8.125rem;
       border-radius: 50%;
-      background-color: #efefef;
+      background-color: $color-bg-avatar;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    &__name {
+    &-name {
       font-weight: 600;
     }
   }
 
-  &__fields {
+  &__block {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
+    justify-content: space-between;
+  }
+
+  &__fields {
     margin-top: 1rem;
   }
   &__actions {
-    width: 100%;
-    margin-top: 7rem;
-    color: #3369f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 35%;
   }
 }

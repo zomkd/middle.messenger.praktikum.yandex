@@ -1,3 +1,5 @@
+@import '../../../../../assets/styles/colors';
+
 .main-chat-dialogs__block {
   display: flex;
   align-items: center;
@@ -6,5 +8,5 @@
   font-weight: 500;
   font-size: 0.75rem;
   line-height: 0.75rem;
-  color: #999999;
+  color: $color-dark-gray;
 }

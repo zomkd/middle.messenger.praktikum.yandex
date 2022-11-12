@@ -5,15 +5,14 @@ include ../../../components/buttons/button-mixin.pug
 include ../../../components/links/link-mixin.pug
 
 block content
-    script(type="module" src='~/src/views/auth/signIn/signIn.ts')
-    .sign-in
-        .sign-in__block
+    main.sign-in
+        form(class='sign-in__block' action='../../chat/chat.html')
             .sign-in__block-title
                 span(class="sign-in__block-title-text") Вход
             .sign-in__block-login-input
-                +input-mixin('Логин')
-                +input-mixin('Пароль')
+                +input-mixin('Логин', 'login')
+                +input-mixin('Пароль', 'password')
             .sign-in__block-auth-btn
-                +button-mixin('Авторизоваться')
+                +button-mixin('submit', 'sign-in-btn', 'Авторизоваться')
             .sign-in__block-sign-up
                 +link-mixin('../signUp/signUp.pug', 'Нет аккаунта?')

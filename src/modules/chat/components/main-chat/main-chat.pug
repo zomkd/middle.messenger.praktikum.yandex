@@ -1,15 +1,12 @@
 include ./main-chat-header/main-chat-header.pug
 include ./main-chat-dialogs/main-chat-dialogs.pug
-include ./main-chat-bottom/main-chat-bottom.pug
 
-section.main-chat
-    script(type="module" src='~/src/modules/chat/components/main-chat/main-chat.ts')
-
+main.main-chat
     header.main-chat__header
         +main-chat-header()
 
-    section.main-chat__dialogs
+    main.main-chat__dialogs
         +main-chat-dialogs('Выберите чат чтобы отправить сообщение')
-        
-    section.main-chat__bottom
-        +main-chat-bottom()
+
+    section.main-chat__bottom    
+        include main-chat-bottom/main-chat-bottom.pug

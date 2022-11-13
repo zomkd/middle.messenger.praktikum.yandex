@@ -1,0 +1,13 @@
+@use 'normalize.css';
+@import 'colors';
+
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  color: $color-dark;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

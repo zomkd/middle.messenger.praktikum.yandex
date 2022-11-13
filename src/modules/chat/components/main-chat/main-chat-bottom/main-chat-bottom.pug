@@ -1,0 +1,10 @@
+include ../../../../../components/inputs/input-mixin.pug
+
+footer.main-chat__bottom
+    section.main-chat-bottom__block
+        .main-chat-bottom__items
+            .main-chat-bottom__attach-btn <img src='~/src/assets/icons/attach-icon.svg'  alt='attach-icon'/>
+            .main-chat-bottom__message-panel
+                .main-chat-bottom__message-panel_text 
+                +input-mixin('', 'message','Сообщение')
+            .main-chat-bottom__send-btn <img src='~/src/assets/icons/send-icon.svg' alt='send-icon'/>

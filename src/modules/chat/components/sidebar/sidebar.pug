@@ -1,0 +1,16 @@
+include ./user-chats/user-chats.pug
+
+section.sidebar
+    header.sidebar__header
+        div.sidebar__header-profile
+            div.sidebar__header-profile-block
+                div(class='sidebar__header-profile-block-text')
+                    a(href='../profile/profile.pug' class='sidebar__header-profile-block-link')  Профиль
+                i.sidebar__header-profile-block-arrow
+        div.sidebar__header-search
+            div.sidebar__header-search-block
+                div.sidebar__header-search-block-icon <img src = "~/src/assets/icons/lens-icon.svg" alt="lens-icon"/>
+                div.sidebar__header-search-block-text Поиск
+    section.user-chats
+        +user-chats-mixin()
+        +user-chats-mixin()

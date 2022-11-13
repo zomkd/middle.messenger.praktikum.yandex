@@ -1,0 +1,12 @@
+include ./main-chat-header/main-chat-header.pug
+include ./main-chat-dialogs/main-chat-dialogs.pug
+
+main.main-chat
+    header.main-chat__header
+        +main-chat-header()
+
+    main.main-chat__dialogs
+        +main-chat-dialogs('Выберите чат чтобы отправить сообщение')
+
+    section.main-chat__bottom    
+        include main-chat-bottom/main-chat-bottom.pug

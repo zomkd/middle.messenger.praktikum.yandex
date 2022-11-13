@@ -1,0 +1,4 @@
+mixin input-mixin(label_name, field_name, placeholder_name)
+    div.input
+        label(class=`input__label ${label_name}`)= label_name || ''
+        input(type='' name=`${field_name}` class=`input__field ${field_name}` placeholder=`${placeholder_name || ''}` required autofocus)

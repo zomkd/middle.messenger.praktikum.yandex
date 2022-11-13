@@ -1,0 +1,8 @@
+extends ../../layouts/main-layout/main-layout.pug
+include ../../components/links/link-mixin.pug
+
+block content
+    .error-message
+        .error-message__code 404
+        .error-message__text Не туда попали
+        +link-mixin('/', 'Назад к чатам ')

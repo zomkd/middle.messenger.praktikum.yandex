@@ -1,0 +1,23 @@
+extends ../../../layouts/main-layout/main-layout.pug
+
+include ../../../components/inputs/input-mixin.pug
+include ../../../components/buttons/button-mixin.pug
+include ../../../components/links/link-mixin.pug
+
+block content
+    main.signUp
+        form(class='signUp__block' action='../../chat/chat.html')
+            .signUp__block-title
+                span(class="sign-in__title") Регистрация
+            .signUp__block-user-info-input
+                +input-mixin('Почта', 'email')
+                +input-mixin('Логин', 'login')
+                +input-mixin('Имя', 'first_name')
+                +input-mixin('Фамилия', 'second_name')
+                +input-mixin('Телефон', 'phone')
+                +input-mixin('Пароль', 'password')
+                +input-mixin('Пароль (ещё раз)', 'password' )
+            .signUp__block-auth-btn
+                +button-mixin('submit', 'sign-up', 'Зарегистрироваться')
+            .signUp__block-signUp
+                +link-mixin('../../chat/chat.pug', 'Войти')

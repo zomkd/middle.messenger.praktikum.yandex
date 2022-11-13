@@ -1,0 +1,12 @@
+@import '../../assets/styles/base';
+@import '../../views/404/404';
+@import '../../views/auth/signIn/signIn';
+@import '../../views/auth/signUp/signUp';
+
+.main-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,18 @@
+extends ../../../layouts/main-layout/main-layout.pug
+
+include ../../../components/inputs/input-mixin.pug
+include ../../../components/buttons/button-mixin.pug
+include ../../../components/links/link-mixin.pug
+
+block content
+    main.sign-in
+        form(class='sign-in__block' action='../../chat/chat.html')
+            .sign-in__block-title
+                span(class="sign-in__block-title-text") Вход
+            .sign-in__block-login-input
+                +input-mixin('Логин', 'login')
+                +input-mixin('Пароль', 'password')
+            .sign-in__block-auth-btn
+                +button-mixin('submit', 'sign-in-btn', 'Авторизоваться')
+            .sign-in__block-sign-up
+                +link-mixin('../signUp/signUp.pug', 'Нет аккаунта?')

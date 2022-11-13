@@ -1,0 +1,13 @@
+@import '../../assets/styles/base';
+@import '../../modules/chat/components/sidebar/sidebar';
+@import '../../modules/chat/components/main-chat/main-chat';
+
+.chat-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}

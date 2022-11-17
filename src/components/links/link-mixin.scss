@@ -10,9 +10,13 @@
   }
 }
 
-.exit {
-  a {
-    text-decoration: none;
-    color: $color-red;
+.profile__link {
+  font-size: 0.8125rem;
+  &_exit {
+    font-size: 0.8125rem;
+    a {
+      text-decoration: none;
+      color: $color-red;
+    }
   }
 }

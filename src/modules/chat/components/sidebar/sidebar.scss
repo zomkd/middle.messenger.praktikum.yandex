@@ -28,6 +28,11 @@
       justify-content: space-around;
       margin-right: 0.5rem;
 
+      a {
+        text-decoration: none;
+        color: $color-dark-gray;
+      }
+
       &-text,
       &-arrow {
         font-weight: 500;

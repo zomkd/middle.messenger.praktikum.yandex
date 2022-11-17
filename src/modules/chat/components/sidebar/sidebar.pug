@@ -1,11 +1,12 @@
 include ./user-chats/user-chats.pug
-
+include ../../../../components/links/link-mixin.pug
 section.sidebar
     header.sidebar__header
         div.sidebar__header-profile
             div.sidebar__header-profile-block
                 div(class='sidebar__header-profile-block-text')
-                    a(href='../profile/profile.pug' class='sidebar__header-profile-block-link')  Профиль
+                    +link-mixin('../profile/profile.pug', 'Профиль', 'sidebar__link')
+                    //- a(href='../profile/profile.pug' class='sidebar__header-profile-block-link')  Профиль
                 i.sidebar__header-profile-block-arrow
         div.sidebar__header-search
             div.sidebar__header-search-block

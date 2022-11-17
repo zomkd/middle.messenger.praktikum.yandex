@@ -36,5 +36,13 @@
     &-signUp {
       margin-top: 0.5rem;
     }
+
+    input {
+      border: 0;
+      border-bottom: 0.0625rem $color-primary solid;
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

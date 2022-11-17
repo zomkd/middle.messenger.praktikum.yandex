@@ -10,13 +10,13 @@ block content
             .signUp__block-title
                 span(class="sign-in__title") Регистрация
             .signUp__block-user-info-input
-                +input-mixin('Почта', 'email')
-                +input-mixin('Логин', 'login')
-                +input-mixin('Имя', 'first_name')
-                +input-mixin('Фамилия', 'second_name')
-                +input-mixin('Телефон', 'phone')
-                +input-mixin('Пароль', 'password')
-                +input-mixin('Пароль (ещё раз)', 'password' )
+                +input-mixin('Почта', 'email', '')
+                +input-mixin('Логин', 'login','')
+                +input-mixin('Имя', 'name','')
+                +input-mixin('Фамилия', 'second_name','')
+                +input-mixin('Телефон', 'phone','')
+                +input-mixin('Пароль', 'password','')
+                +input-mixin('Пароль (ещё раз)', 'password','' )
             .signUp__block-auth-btn
                 +button-mixin('submit', 'sign-up', 'Зарегистрироваться')
             .signUp__block-signUp

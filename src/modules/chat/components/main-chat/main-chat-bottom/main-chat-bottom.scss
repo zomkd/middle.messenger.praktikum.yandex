@@ -27,4 +27,11 @@
   &_text {
     margin-left: 1rem;
   }
+  input {
+    border: 0;
+    background: $color-bg-avatar;
+    &:focus {
+      outline: none;
+    }
+  }
 }

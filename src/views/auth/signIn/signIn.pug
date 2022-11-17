@@ -10,8 +10,8 @@ block content
             .sign-in__block-title
                 span(class="sign-in__block-title-text") Вход
             .sign-in__block-login-input
-                +input-mixin('Логин', 'login')
-                +input-mixin('Пароль', 'password')
+                +input-mixin('Логин', 'login', '')
+                +input-mixin('Пароль', 'password', '')
             .sign-in__block-auth-btn
                 +button-mixin('submit', 'sign-in-btn', 'Авторизоваться')
             .sign-in__block-sign-up

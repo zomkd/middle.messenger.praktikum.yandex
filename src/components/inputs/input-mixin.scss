@@ -10,10 +10,20 @@
 
   &__field {
     border: 0;
-    border-bottom: 0.0625rem $color-primary solid;
 
-    &:focus {
-      outline: none;
+    // &-sign-up {
+    //   border: 0;
+    //   border-bottom: 0.0625rem $color-primary solid;
+    //   &:focus {
+    //     outline: none;
+    //   }
+    // }
+
+    &-message {
+      border: 0;
+      &:focus {
+        outline: none;
+      }
     }
   }
 
@@ -22,10 +32,4 @@
     line-height: 0.5625rem;
     color: $color-dark-gray;
   }
-}
-
-.message,
-.search {
-  border: 0;
-  background: $color-bg-avatar;
 }

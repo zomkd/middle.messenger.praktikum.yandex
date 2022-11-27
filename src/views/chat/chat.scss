@@ -1,7 +1,8 @@
-@import '../../layouts/chat-layout/chat-layout.scss';
-@import '../../assets/styles/colors.scss';
-@import '../../modules/chat/components/sidebar/sidebar.scss';
-@import '../../modules/chat/components/main-chat/main-chat.scss';
+@import '../../layouts/chat-layout/chat-layout';
+@import '../../assets/styles/colors';
+@import '../../modules/chat/components/sidebar/sidebar';
+@import '../../modules/chat/components/main-chat/main-chat';
+
 .chat {
   display: flex;
   width: 100%;

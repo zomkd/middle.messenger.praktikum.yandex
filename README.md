@@ -11,3 +11,12 @@ https://tubular-florentine-b06955.netlify.app/
 npm i
 npm run start
 ```
+## 2ой спринт
+ДобавленTypeScript
+
+Добавлена валидация полей
+
+Добавлены линтинг кода и стилей
+
+Написаны API методы
+

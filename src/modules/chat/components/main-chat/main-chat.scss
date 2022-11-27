@@ -3,10 +3,6 @@
 @import './main-chat-dialogs/main-chat-dialogs';
 
 .main-chat {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
   &__header,
   &__bottom {
     display: flex;

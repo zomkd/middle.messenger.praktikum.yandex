@@ -1,12 +1,5 @@
-mixin profile-input-mixin(name, body, mode, is_input, is_active, user_href, type)
-    include ../../links/link-mixin.pug
-
-    div(class=`profile-card__field ${mode}`)
-            if is_active
-                +link-mixin(user_href, name, is_active, mode)
-            else
-                span.profile-card__field__title= name 
-            if is_input 
-                input(type=`${type}` name=name class=`input__field profile-card__field__body` value=`${body || ''}` required autofocus)
-            else
-                span.profile-card__field__body= body 
+span.profile-card__field__title= label 
+if is_input 
+    input(type=`${type}` name=name class=`input__field profile-card__field__body` value=`${body || ''}` required autofocus)
+else
+    span.profile-card__field__body= body 

@@ -1,3 +1,2 @@
-mixin link-mixin(user_href, content, is_active, mode)
-    div(class=`link ${mode}`)
-        a(href=user_href )= content
+div(class=`link ${extraClass || ''}`)
+    a(href=href )= content

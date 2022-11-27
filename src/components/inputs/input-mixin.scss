@@ -10,10 +10,13 @@
 
   &__field {
     border: 0;
-    border-bottom: 0.0625rem $color-primary solid;
 
-    &:focus {
-      outline: none;
+    &-message,
+    &-search {
+      border: 0;
+      &:focus {
+        outline: none;
+      }
     }
   }
 
@@ -23,9 +26,6 @@
     color: $color-dark-gray;
   }
 }
-
-.message,
-.search {
-  border: 0;
-  background: $color-bg-avatar;
+.invalid {
+  color: $color-red;
 }

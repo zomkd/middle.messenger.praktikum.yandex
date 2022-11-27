@@ -23,12 +23,13 @@
     line-height: 13px;
     color: $color-dark-gray;
   }
+  input {
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
 }
-
-.update {
-  color: $color-primary;
-}
-
-.exit {
+.invalid {
   color: $color-red;
 }

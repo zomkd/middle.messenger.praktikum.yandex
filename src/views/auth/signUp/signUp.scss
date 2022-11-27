@@ -1,4 +1,5 @@
 @import '../../../assets/styles/colors';
+@import '../../../layouts/main-layout/main-layout';
 
 .signUp {
   height: 30rem;
@@ -35,6 +36,25 @@
 
     &-signUp {
       margin-top: 0.5rem;
+    }
+
+    .input__field {
+      &-login,
+      &-password,
+      &-email,
+      &-first_name,
+      &-second_name,
+      &-phone,
+      &-repeatPassword {
+        border: 0;
+        border-bottom: 0.0625rem $color-primary solid;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .invalid {
+      border-bottom: 0.0625rem $color-red solid;
     }
   }
 }

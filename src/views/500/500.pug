@@ -3,7 +3,7 @@ include ../../components/links/link-mixin.pug
 
 block content
     .error-message
-        .error-message__code 500
-        .error-message__text Мы уже фиксим
-        +link-mixin('/', 'Назад к чатам ')
+        .error-message__code=errorMessageCode
+        .error-message__text=errorMessageText
+        |  !{link}
         

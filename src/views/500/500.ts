@@ -1,7 +1,7 @@
 import { Block } from '../../utils/block/block';
 import { BaseLink } from '../../components/links/link-mixin';
-import template from './404.pug';
-import './404.scss';
+import template from '../404/404.pug';
+import '../404/404.scss';
 
 interface ErrorProps {
   errorMessageCode: string;
@@ -10,7 +10,7 @@ interface ErrorProps {
   message: string;
 }
 
-export class Page404 extends Block {
+export class Page500 extends Block {
   constructor(props: ErrorProps) {
     super('main', props);
   }

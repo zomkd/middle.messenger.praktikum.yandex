@@ -1,4 +1,4 @@
-import { IListeners, ICallback } from '@/core/event-bus/types';
+import { IListeners, TypeHandler } from './types';
 
 export class EventBus {
   listeners: IListeners;
@@ -7,20 +7,20 @@ export class EventBus {
     this.listeners = {};
   }
 
-  on(event: string, callback: ICallback) {
+  on(event: string, handler: TypeHandler) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
 
-    this.listeners[event].push(callback);
+    this.listeners[event].push(handler);
   }
 
-  off(event: string, callback: ICallback) {
+  off(event: string, handler: TypeHandler) {
     if (!this.listeners[event]) {
       throw new Event(`Нет события: ${event}`);
     }
     this.listeners[event] = this.listeners[event].filter(
-      (listener) => listener !== callback,
+      (listener) => listener !== handler,
     );
   }
 
@@ -29,6 +29,6 @@ export class EventBus {
       throw new Event(`Нет события: ${event}`);
     }
 
-    this.listeners[event].forEach((listener) => listener.callback(...args));
+    this.listeners[event].forEach((listener) => listener(...args));
   }
 }

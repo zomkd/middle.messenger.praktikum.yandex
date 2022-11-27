@@ -2,12 +2,6 @@
 @import './user-chats/user-chats';
 
 .sidebar {
-  max-width: 19.375rem;
-  width: 100%;
-  background: $color-bg-sidebar;
-  display: flex;
-  flex-direction: column;
-
   &__header {
     height: 6.375rem;
     display: flex;
@@ -32,7 +26,6 @@
         text-decoration: none;
         color: $color-dark-gray;
       }
-
       &-text,
       &-arrow {
         font-weight: 500;
@@ -74,6 +67,18 @@
       font-size: 0.75rem;
       line-height: 0.75rem;
       color: $color-dark-gray;
+
+      &-icon {
+        padding-left: 5%;
+        display: flex;
+        align-items: center;
+        input {
+          height: 80%;
+          background: #efefef;
+          border: 0;
+          width: 80%;
+        }
+      }
     }
   }
 }

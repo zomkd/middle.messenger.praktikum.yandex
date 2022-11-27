@@ -22,10 +22,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "auto-imports.d.ts"
-  ]
+  "include": ["src/**/*.pug", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"]
 }

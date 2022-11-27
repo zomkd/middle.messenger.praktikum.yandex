@@ -1,21 +1,18 @@
 extends ../../../layouts/profile-layout/profile-layout.pug
-include ../../../components/inputs/profile-inputs/profile-input-mixin.pug
-include ../../../components/buttons/button-mixin.pug
 
 block profile-card
     .profile-card
         section.profile-card__user-info
             .profile-card__user-info-avatar <img src = "~/src/assets/icons/empty-avatar-icon.svg" alt="empty-avatar-icon"/>
 
-
         form(class='profile-card__block' action='../../chat/chat.html')
             .profile-card__fields 
-                +profile-input-mixin('Почта','temp@a.ru', true)
-                +profile-input-mixin('Логин','ivan', true)
-                +profile-input-mixin('Имя','iv', true)
-                +profile-input-mixin('Фамилия','test', true)
-                +profile-input-mixin('Имя в чате','tester', true)
-                +profile-input-mixin('Телефон','+7 (123) 123 12 32', true)
+                | !{email}
+                | !{login}
+                | !{firstName}
+                | !{secondName}
+                | !{username}
+                | !{phone}
             .profile-card__actions
                 .profile-card__actions-btn
-                    +button-mixin('','save-changes', 'Сохранить')
+                    | !{button}

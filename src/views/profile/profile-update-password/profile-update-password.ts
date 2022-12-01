@@ -1,7 +1,7 @@
 import { Block } from '../../../utils/block/block';
 import { ProfileCardInput } from '../../../components/inputs/profile-inputs/profile-input-mixin';
 import { Button } from '../../../components/buttons/button-mixin';
-import { validate } from '../../../utils/validator/validator';
+import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
 import template from './profile-update-password.pug';
 import '../../../components/profile-card/profile-card-mixin.scss';
@@ -11,47 +11,41 @@ export class ProfileUpdatePassword extends Block {
   constructor() {
     super('main', {});
   }
-  validateBlock(event: Event): void {
-    const element = event.target as HTMLInputElement;
-    if (validate(element)) {
-      element.classList.add('invalid');
-    } else {
-      element.classList.remove('invalid');
-    }
-  }
-
   init() {
     this.children.oldPassword = new ProfileCardInput({
       name: 'oldPassword',
       type: 'password',
       label: 'Старый пароль',
+      error: 'Неверный паорль',
       body: 'temp@a.ru',
       is_input: true,
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.newPassword = new ProfileCardInput({
       name: 'newPassword',
       type: 'password',
+      error: 'Недостаточное количество символов',
       label: 'Новый пароль',
       body: 'ivan',
       is_input: true,
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.repeatPassword = new ProfileCardInput({
       name: 'repeatPassword',
       type: 'password',
       label: 'Повтороите новый пароль',
+      error: 'Пароли не совпадают',
       body: 'iv',
       is_input: true,
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.button = new Button({

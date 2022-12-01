@@ -2,7 +2,7 @@ import { Block } from '../../../utils/block/block';
 import { Button } from '../../../components/buttons/button-mixin';
 import { Input } from '../../../components/inputs/input-mixin';
 import { BaseLink } from '../../../components/links/link-mixin';
-import { validate } from '../../../utils/validator/validator';
+import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
 import template from './signUp.pug';
 import './signUp.scss';
@@ -16,24 +16,16 @@ export class SignUp extends Block {
     super('main', props);
   }
 
-  validateBlock(event: Event): void {
-    const element = event.target as HTMLInputElement;
-    if (validate(element)) {
-      element.classList.add('invalid');
-    } else {
-      element.classList.remove('invalid');
-    }
-  }
-
   init() {
     this.children.email = new Input({
       name: 'email',
       type: 'text',
       label: 'Почта',
       placeholder: '',
+      error: 'Неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -42,9 +34,10 @@ export class SignUp extends Block {
       type: 'text',
       label: 'Логин',
       placeholder: '',
+      error: 'Недостаточное количество символов или неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -53,9 +46,10 @@ export class SignUp extends Block {
       type: 'text',
       label: 'Имя',
       placeholder: '',
+      error: 'Недостаточное количество символов или неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -64,9 +58,10 @@ export class SignUp extends Block {
       type: 'text',
       label: 'Фамилия',
       placeholder: '',
+      error: 'Недостаточное количество символов или неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -75,9 +70,10 @@ export class SignUp extends Block {
       type: 'text',
       label: 'Телефон',
       placeholder: '',
+      error: 'Недостаточное количество символов или неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -86,9 +82,10 @@ export class SignUp extends Block {
       type: 'password',
       label: 'Пароль',
       placeholder: '',
+      error: 'Пароль должен быть как минимум из 8 символов',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -97,9 +94,10 @@ export class SignUp extends Block {
       type: 'password',
       label: 'Пароль (ещё раз)',
       placeholder: '',
+      error: 'Пароль не совпадают',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 

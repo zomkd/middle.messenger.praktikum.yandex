@@ -2,7 +2,7 @@ import { Button } from '../../../components/buttons/button-mixin';
 import { Block } from '../../../utils/block/block';
 import { Input } from '../../../components/inputs/input-mixin';
 import { BaseLink } from '../../../components/links/link-mixin';
-import { validate } from '../../../utils/validator/validator';
+import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
 import template from './signIn.pug';
 import './signIn.scss';
@@ -16,24 +16,16 @@ export class SignIn extends Block {
     super('main', props);
   }
 
-  validateBlock(event: Event): void {
-    const element = event.target as HTMLInputElement;
-    if (validate(element)) {
-      element.classList.add('invalid');
-    } else {
-      element.classList.remove('invalid');
-    }
-  }
-
   init() {
     this.children.login = new Input({
       name: 'login',
       type: 'text',
       label: 'Логин',
       placeholder: '',
+      error: 'Логин должен содержать больше 3х символов',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -42,9 +34,10 @@ export class SignIn extends Block {
       type: 'password',
       label: 'Пароль',
       placeholder: '',
+      error: 'Недопустимые символы',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
 
@@ -59,7 +52,7 @@ export class SignIn extends Block {
 
     this.children.link = new BaseLink({
       content: 'Нет аккаунта?',
-      href: '../signUp/signUp.pug',
+      href: 'src/views/auth/signUp/signUp.pug',
     });
   }
   onSubmit(e) {

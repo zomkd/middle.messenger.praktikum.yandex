@@ -1,5 +1,5 @@
 @import '../../assets/styles/colors';
-
+/* stylelint-disable */
 .input {
   width: 17.5rem;
   height: 1.875rem;
@@ -28,4 +28,17 @@
 }
 .invalid {
   color: $color-red;
+}
+
+.error {
+  font-size: 0.5rem;
+  color: $color-red;
+  &-login,
+  &-email,
+  &-first_name,
+  &-second_name,
+  &-phone,
+  &-password {
+    display: none;
+  }
 }

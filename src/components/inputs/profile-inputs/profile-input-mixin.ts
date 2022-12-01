@@ -9,9 +9,10 @@ interface ProfileCardInputProps {
   is_input?: boolean;
   placeholder?: string;
   type: string;
+  error?: string;
   events?: {
-    focusin: any;
-    focusout: any;
+    focusin: () => void;
+    focusout: () => void;
   };
 }
 
@@ -20,17 +21,6 @@ export class ProfileCardInput extends Block {
     super('div', props);
     this.element!.classList.add('profile-card__field');
   }
-
-  // onSubmit() {
-  //   const values = Object
-  //     .values(this.children)
-  //     .filter(child => child instanceof Input)
-  //     .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
-
-  //   const data = Object.fromEntries(values);
-
-  //   AuthController.signin(data as SignupData);
-  // }
 
   render() {
     return this.compile(template, this.props);

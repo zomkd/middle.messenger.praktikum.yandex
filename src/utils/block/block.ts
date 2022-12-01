@@ -1,8 +1,6 @@
 import { EventBus } from '../event-bus/event-bus';
-import { IMeta } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
-// Нельзя создавать экземпляр данного класса
 export class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
@@ -131,7 +129,7 @@ export class Block<P extends Record<string, any> = any> {
 
   private _render() {
     const fragment = this.render();
-
+    this._removeEvents();
     this._element!.innerHTML = '';
 
     this._element!.append(fragment);
@@ -189,7 +187,6 @@ export class Block<P extends Record<string, any> = any> {
   }
 
   _makePropsProxy(props: P) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props, {
@@ -202,8 +199,6 @@ export class Block<P extends Record<string, any> = any> {
 
         target[prop as keyof P] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
@@ -214,7 +209,6 @@ export class Block<P extends Record<string, any> = any> {
   }
 
   _createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
 
@@ -226,5 +220,15 @@ export class Block<P extends Record<string, any> = any> {
     this.getContent()!.style.display = 'none';
   }
 
-  validateBlock(event: Event) {}
+  _removeEvents() {
+    const { events = {} }: any = this.props;
+
+    if (!events || !this._element) {
+      return;
+    }
+
+    Object.keys(events).forEach((eventName) => {
+      this._element!.removeEventListener(eventName, events[eventName]);
+    });
+  }
 }

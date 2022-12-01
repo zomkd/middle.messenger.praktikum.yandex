@@ -1,7 +1,6 @@
 import { validate } from '../validator/validator';
 
 export function serializer(event: Event, fields: string[]) {
-  debugger;
   event.preventDefault();
   const formData: { [index: string]: any } = {};
   let isFormValid = true;

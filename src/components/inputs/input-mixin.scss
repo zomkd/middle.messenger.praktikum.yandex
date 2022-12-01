@@ -29,3 +29,16 @@
 .invalid {
   color: $color-red;
 }
+
+.error {
+  font-size: 0.5rem;
+  color: $color-red;
+  &-login,
+  &-email,
+  &-first_name,
+  &-second_name,
+  &-phone,
+  &-password {
+    display: none;
+  }
+}

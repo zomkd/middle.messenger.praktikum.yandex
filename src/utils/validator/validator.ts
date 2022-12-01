@@ -18,7 +18,6 @@ export function validate(element: HTMLInputElement) {
     const isTextLoginValid = /^([0-9]*[a-zA-Z\-_][0-9]*)+$/.test(value);
     const isLengthLoginValid = value.length >= 3 && value.length < 20;
     if (!isLengthLoginValid || !isTextLoginValid) {
-      // if (value.length === 0) return false;
       return true;
     }
     return null;
@@ -34,7 +33,6 @@ export function validate(element: HTMLInputElement) {
     const isValidLength = value.length >= 8 && value.length < 40;
 
     if (!isValidText || !isValidLength) {
-      // if (value.length === 0) return false;
       return true;
     }
     return null;
@@ -44,7 +42,6 @@ export function validate(element: HTMLInputElement) {
     const isValidValue = /^[A-ZА-Я][a-zA-Zа-яА-Я-]*$/.test(value);
 
     if (!isValidValue) {
-      // if (value.length === 0) return false;
       return true;
     }
 
@@ -55,7 +52,6 @@ export function validate(element: HTMLInputElement) {
     const isValidValue = /^([\w-.]+@[a-zA-Z]+.[a-z]+)$/.test(value);
 
     if (!isValidValue) {
-      // if (value.length === 0) return false;
       return true;
     }
 
@@ -66,7 +62,6 @@ export function validate(element: HTMLInputElement) {
     const isValidValue = /^\+*[\d]{10,15}$/.test(value);
 
     if (!isValidValue) {
-      // if (value.length === 0) return false;
       return true;
     }
 
@@ -77,10 +72,22 @@ export function validate(element: HTMLInputElement) {
     const isValidLength = value.length > 0;
 
     if (!isValidLength) {
-      // if (value.length === 0) return false;
       return true;
     }
 
     return null;
+  }
+}
+
+export function validateBlock(event: Event): void {
+  const element = event.target as HTMLInputElement;
+  if (validate(element)) {
+    element.classList.add('invalid');
+    document.getElementsByClassName(`error-${element.name}`)[0].style.display =
+      'block';
+  } else {
+    element.classList.remove('invalid');
+    document.getElementsByClassName(`error-${element.name}`)[0].style.display =
+      'none';
   }
 }

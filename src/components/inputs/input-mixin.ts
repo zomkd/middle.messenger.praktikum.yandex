@@ -7,9 +7,10 @@ interface InputProps {
   type: string;
   label?: string;
   placeholder: string;
+  error?: string;
   events?: {
-    focusin: any;
-    focusout: any;
+    focusin: (event: Event) => void;
+    focusout: (event: Event) => void;
   };
 }
 

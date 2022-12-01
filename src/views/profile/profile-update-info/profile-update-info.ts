@@ -1,7 +1,7 @@
 import { Block } from '../../../utils/block/block';
 import { ProfileCardInput } from '../../../components/inputs/profile-inputs/profile-input-mixin';
 import { Button } from '../../../components/buttons/button-mixin';
-import { validate } from '../../../utils/validator/validator';
+import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
 import template from './profile-update-info.pug';
 import '../../../components/profile-card/profile-card-mixin.scss';
@@ -11,14 +11,6 @@ export class ProfileUpdateInfo extends Block {
   constructor() {
     super('main', {});
   }
-  validateBlock(event: Event): void {
-    const element = event.target as HTMLInputElement;
-    if (validate(element)) {
-      element.classList.add('invalid');
-    } else {
-      element.classList.remove('invalid');
-    }
-  }
 
   init() {
     this.children.email = new ProfileCardInput({
@@ -27,9 +19,10 @@ export class ProfileUpdateInfo extends Block {
       label: 'Почта',
       body: 'temp@a.ru',
       is_input: true,
+      error: 'Неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.login = new ProfileCardInput({
@@ -38,9 +31,10 @@ export class ProfileUpdateInfo extends Block {
       label: 'Логин',
       body: 'ivan',
       is_input: true,
+      error: 'Недостаточное количество символов или неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.firstName = new ProfileCardInput({
@@ -49,9 +43,10 @@ export class ProfileUpdateInfo extends Block {
       label: 'Имя',
       body: 'iv',
       is_input: true,
+      error: 'Недостаточное количество символов или неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.secondName = new ProfileCardInput({
@@ -59,10 +54,11 @@ export class ProfileUpdateInfo extends Block {
       type: 'text',
       label: 'Фамилия',
       body: 'test',
+      error: 'Недостаточное количество символов или неверный формат',
       is_input: true,
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.username = new ProfileCardInput({
@@ -71,9 +67,10 @@ export class ProfileUpdateInfo extends Block {
       label: 'Имя в чате',
       body: 'tester',
       is_input: true,
+      error: 'Недостаточное количество символов или неверный формат',
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.phone = new ProfileCardInput({
@@ -81,10 +78,11 @@ export class ProfileUpdateInfo extends Block {
       type: 'text',
       label: 'Телефон',
       body: '+7 (123) 123 12 32',
+      error: 'Недостаточное количество символов или неверный формат',
       is_input: true,
       events: {
-        focusout: this.validateBlock.bind(this),
-        focusin: this.validateBlock.bind(this),
+        focusout: (event: Event) => validateBlock(event),
+        focusin: (event: Event) => validateBlock(event),
       },
     });
     this.children.button = new Button({

@@ -76,6 +76,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   switch (path) {
     case '/src/views/auth/signIn/signIn.pug':
+      console.log('asdasd')
       root.replaceChildren(signIn.getContent()!);
       signIn.dispatchComponentDidMount();
       break;

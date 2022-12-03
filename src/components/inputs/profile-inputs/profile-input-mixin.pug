@@ -1,7 +1,6 @@
-mixin profile-input-mixin(name, body, is_input, type)
-    div(class=`profile-card__field`)
-            span.profile-card__field__title= name 
-            if is_input 
-                input(type=`${type}` name=name class=`input__field profile-card__field__body` value=`${body || ''}` required autofocus)
-            else
-                span.profile-card__field__body= body 
+span.profile-card__field__title= label 
+if is_input 
+    input(type=`${type}` name=name class=`input__field profile-card__field__body` value=`${body || ''}` required autofocus)
+    label(class=`error error-${name}`)=error || ''
+else
+    span.profile-card__field__body= body 

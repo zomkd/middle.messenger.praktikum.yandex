@@ -1,24 +1,19 @@
-mixin profile-card-mixin()
-    include ../inputs/profile-inputs/profile-input-mixin.pug
-    include ../links/link-mixin.pug
-    .profile-card
-        .profile-card__user-info
-            .profile-card__user-info-avatar <img src = "~/src/assets/icons/empty-avatar-icon.svg" alt="empty-avatar-icon"/>
-            .profile-card__user-info-name Unknown
+.profile-card__user-info
+    .profile-card__user-info-avatar=img
+    .profile-card__user-info-name=userInfoName
 
-        .profile-card__block
-            .profile-card__fields 
-                +profile-input-mixin('Почта','temp@a.ru')
-                +profile-input-mixin('Логин','ivan')
-                +profile-input-mixin('Имя','iv')
-                +profile-input-mixin('Фамилия','test')
-                +profile-input-mixin('Имя в чате','tester')
-                +profile-input-mixin('Телефон','+7 (123) 123 12 32')
-            
-            .profile-card__actions
-                .profile-card__field
-                    +link-mixin('../../views/profile/profile-update-info/profile-update-info.pug', 'Изменить данные', 'profile__link')
-                .profile-card__field
-                    +link-mixin('../../views/profile/profile-update-password/profile-update-password.pug', 'Изменить пароль', 'profile__link')
-                .profile-card__field    
-                    +link-mixin('../../views/chat/chat.pug', 'Выйти', 'profile__link_exit')
+.profile-card__block
+    .profile-card__fields 
+        | !{email}
+        | !{login}
+        | !{firstName}
+        | !{secondName}
+        | !{username}
+    
+    .profile-card__actions
+        .profile-card__field
+            | !{updateInfoLink}
+        .profile-card__field
+            | !{updatePasswordLink}
+        .profile-card__field    
+            | !{exitLink}

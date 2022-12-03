@@ -1,2 +1,13 @@
-mixin main-chat-dialogs(content)
-    .main-chat-dialogs__block= content
+div(class='empty-chat')=content
+
+.messages
+    .message-date 1 января
+    .message-mine
+        .message-mine-block
+            .message-text-mine orem ipsum dolor sit amet consectetur adipisicing elit. Officiis vel obcaecati iste
+                .message-time-mine 23:59
+    .message-your
+        .message-your-block
+            .message-text-your orem ipsum dolor sit amet consectetur adipisicing elit. Officiis vel obcaecati iste
+                .message-time-your 11:21
+

@@ -1,12 +1,65 @@
 @import '../../../../../assets/styles/colors';
-
+/* stylelint-disable */
 .main-chat-dialogs__block {
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   font-weight: 500;
   font-size: 0.75rem;
   line-height: 0.75rem;
   color: $color-dark-gray;
+}
+
+.empty-chat {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.messages {
+  display: none;
+  margin-top: 3%;
+  width: 100%;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.message-mine,
+.message-your {
+  display: flex;
+  margin-top: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.message-mine {
+  justify-content: flex-end;
+}
+.message-mine-block,
+.message-your-block {
+  background-color: $color-message;
+  border-radius: 11px;
+  border-bottom-right-radius: 0;
+  max-width: 400px;
+  box-sizing: border-box;
+  padding: 11px;
+  margin: 5px;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #1e1e1e;
+}
+.message-date {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-time-mine,
+.message-time-your {
+  font-style: normal;
+  font-size: 9px;
+  line-height: 9px;
+  text-align: right;
 }

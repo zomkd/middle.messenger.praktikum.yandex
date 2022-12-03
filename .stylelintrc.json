@@ -1,10 +1,6 @@
 {
   "root": true,
-  "extends": [
-    "stylelint-config-standard-scss",
-    "stylelint-config-standard-scss",
-    "stylelint-config-prettier"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
   "rules": {
     "indentation": 2,
     "number-leading-zero": "always"

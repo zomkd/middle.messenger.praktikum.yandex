@@ -19,23 +19,18 @@ type HTTPMethod = (
 ) => Promise<Response>;
 
 export default class HttpTransport {
-  static API_URL: string = '123';
+  static API_URL = 'https://ya-praktikum.tech/api/v2';
   protected endpoint: string;
 
   constructor(endpoint: string) {
     this.endpoint = `${HttpTransport.API_URL}${endpoint}`;
   }
 
-  public get: HTTPMethod = (path = '/', options: Options) => {
-    if (path === '/') {
-      path = stringToQuery(options!.data);
-    } else {
-      path += stringToQuery(options!.data);
-    }
+  public get<Response>(path = '/'): Promise<Response> {
     return this.request<Response>(this.endpoint + path);
-  };
+  }
 
-  public post: HTTPMethod = (path: string, data?: unknown) => {
+  public post: HTTPMethod = (path: string | undefined, data?: unknown) => {
     return this.request<Response>(this.endpoint + path, {
       method: Method.POST,
       data,
@@ -71,30 +66,25 @@ export default class HttpTransport {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
 
-      xhr.onreadystatechange = (e) => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status < 400) {
-            resolve(xhr.response);
-          } else {
-            reject(xhr.response);
-          }
-        }
-
-        xhr.onabort = () => reject({ reason: 'abort' });
-        xhr.onerror = () => reject({ reason: 'network error' });
-        xhr.ontimeout = () => reject({ reason: 'timeout' });
-
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.withCredentials = true;
-        xhr.responseType = 'json';
-
-        if (method === Method.GET || !data) {
-          xhr.send();
-        } else {
-          xhr.send(JSON.stringify(data));
-        }
+      xhr.onload = () => {
+        resolve(xhr.response);
       };
+
+      xhr.onabort = () => reject({ reason: 'abort' });
+      xhr.onerror = () => reject({ reason: 'network error' });
+      xhr.ontimeout = () => reject({ reason: 'timeout' });
+
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
+      xhr.withCredentials = true;
+      xhr.responseType = 'json';
+
+      if (method === Method.GET || !data) {
+        xhr.send();
+      } else {
+        xhr.send(data instanceof FormData ? data : JSON.stringify(data));
+      }
     });
   }
 }

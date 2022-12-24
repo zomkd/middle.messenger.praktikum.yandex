@@ -1,6 +1,6 @@
 import { EventBus } from '../event-bus/event-bus';
 import { v4 as uuidv4 } from 'uuid';
-
+// public id = uuidv4();
 export class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
@@ -14,17 +14,17 @@ export class Block<P extends Record<string, any> = any> {
   public children: Record<string, Block | Block[]>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
-  private _meta: { tagName: string; props: P };
 
-  constructor(tagName = 'div', propsWithChildren: P) {
+  /** JSDoc
+   * @param {string} tagName
+   * @param {Object} props
+   *
+   * @returns {void}
+   */
+  constructor(propsWithChildren: P) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-
-    this._meta = {
-      tagName,
-      props: props as P,
-    };
 
     this.children = children;
     this.props = this._makePropsProxy(props);
@@ -44,10 +44,14 @@ export class Block<P extends Record<string, any> = any> {
     const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (Array.isArray(value) && value.every((v) => v instanceof Block)) {
-        children[key] = value;
+      if (
+        Array.isArray(value) &&
+        value.length > 0 &&
+        value.every((v) => v instanceof Block)
+      ) {
+        children[key as string] = value;
       } else if (value instanceof Block) {
-        children[key] = value;
+        children[key as string] = value;
       } else {
         props[key] = value;
       }
@@ -60,6 +64,7 @@ export class Block<P extends Record<string, any> = any> {
     const { events = {} } = this.props as P & {
       events: Record<string, () => void>;
     };
+
     Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
@@ -72,14 +77,7 @@ export class Block<P extends Record<string, any> = any> {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
-  }
-
   private _init() {
-    this._createResources();
-
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -115,7 +113,7 @@ export class Block<P extends Record<string, any> = any> {
     return true;
   }
 
-  setProps = (nextProps: P) => {
+  setProps = (nextProps: Partial<P>) => {
     if (!nextProps) {
       return;
     }
@@ -129,10 +127,14 @@ export class Block<P extends Record<string, any> = any> {
 
   private _render() {
     const fragment = this.render();
-    this._removeEvents();
-    this._element!.innerHTML = '';
 
-    this._element!.append(fragment);
+    const newElement = fragment.firstElementChild as HTMLElement;
+
+    if (this._element && newElement) {
+      this._element.replaceWith(newElement);
+    }
+
+    this._element = newElement;
 
     this._addEvents();
   }
@@ -149,6 +151,7 @@ export class Block<P extends Record<string, any> = any> {
         contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
       }
     });
+
     const html = template(contextAndStubs);
 
     const temp = document.createElement('template');
@@ -187,6 +190,7 @@ export class Block<P extends Record<string, any> = any> {
   }
 
   _makePropsProxy(props: P) {
+    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props, {
@@ -199,36 +203,14 @@ export class Block<P extends Record<string, any> = any> {
 
         target[prop as keyof P] = value;
 
+        // Запускаем обновление компоненты
+        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {
         throw new Error('Нет доступа');
       },
-    });
-  }
-
-  _createDocumentElement(tagName: string) {
-    return document.createElement(tagName);
-  }
-
-  show() {
-    this.getContent()!.style.display = 'block';
-  }
-
-  hide() {
-    this.getContent()!.style.display = 'none';
-  }
-
-  _removeEvents() {
-    const { events = {} }: any = this.props;
-
-    if (!events || !this._element) {
-      return;
-    }
-
-    Object.keys(events).forEach((eventName) => {
-      this._element!.removeEventListener(eventName, events[eventName]);
     });
   }
 }

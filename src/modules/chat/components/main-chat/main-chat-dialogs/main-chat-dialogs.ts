@@ -7,8 +7,8 @@ interface MainChatDialogsProps {
 
 export class MainChatDialogs extends Block {
   constructor(props: MainChatDialogsProps) {
-    super('div', props);
-    this.element!.classList.add('main-chat-dialogs__block');
+    super(props);
+    // this.element!.classList.add('main-chat-dialogs__block');
   }
 
   render() {

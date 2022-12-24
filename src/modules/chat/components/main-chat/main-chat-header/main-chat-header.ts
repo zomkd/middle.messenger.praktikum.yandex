@@ -2,13 +2,13 @@ import { Block } from '../../../../../utils/block/block';
 import template from './main-chat-header.pug';
 
 interface MainChatHeaderProps {
-  username: string;
+  username?: any;
+  img?: any;
 }
 
 export class MainChatHeader extends Block {
   constructor(props: MainChatHeaderProps) {
-    super('div', props);
-    this.element!.classList.add('main-chat-header__block');
+    super(props);
   }
 
   render() {

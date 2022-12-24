@@ -1,37 +1,31 @@
 import { Block } from '../../../../../utils/block/block';
 import template from './user-chats.pug';
 import './user-chats.scss';
-import { SignupData } from '../../api/AuthAPI';
+import { withStore } from '../../../../../hocs/withStore';
+import { ChatInfo } from '../../../../../api/ChatsAPI';
 
 interface UserChatsProps {
-  href: string;
-  name: string;
-  message: string;
-  time: string;
-  newMessageCount: number;
+  id: number;
+  title: string;
+  unread_count: number;
+  selectedChat: ChatInfo;
   events: {
-    click: () => {};
+    click: () => void;
   };
 }
 
-export class UserChats extends Block {
+export class UserChatsBase extends Block {
   constructor(props: UserChatsProps) {
-    super('div', props);
-    this.element!.classList.add('user-chats__block');
+    super(props);
   }
-
-  // onSubmit() {
-  //   const values = Object
-  //     .values(this.children)
-  //     .filter(child => child instanceof Input)
-  //     .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
-
-  //   const data = Object.fromEntries(values);
-
-  //   AuthController.signin(data as SignupData);
-  // }
 
   render() {
     return this.compile(template, this.props);
   }
 }
+
+export const withSelectedChat = withStore((state) => ({
+  selectedChat: (state.chats || []).find(({ id }) => id === state.selectedChat),
+}));
+
+export const UserChats = withSelectedChat(UserChatsBase);

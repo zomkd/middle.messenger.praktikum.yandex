@@ -1,84 +1,86 @@
 import { Block } from '../../../../utils/block/block';
 import template from './sidebar.pug';
-import { BaseLink } from '../../../../components/links/link-mixin';
-import { Input } from '../../../..//components/inputs/input-mixin';
+import { Link } from '../../../../components/links/link-mixin';
+import { Input } from '../../../../components/inputs/input-mixin';
 import { UserChats } from './user-chats/user-chats';
+import store from '../../../../store/store';
+import ChatsController from '../../../../controllers/ChatsController';
+import { withStore } from '../../../../hocs/withStore';
+import { ChatInfo } from '../../../../api/ChatsAPI';
+import { Button } from '../../../../components/buttons/button-mixin';
 
 interface SidebarProps {
-  title: string;
-  img: string;
+  chats: ChatInfo[];
 }
-
-export class Sidebar extends Block {
+class SidebarBase extends Block {
   constructor(props: SidebarProps) {
-    super('main', props);
-    this.element!.classList.add('sidebar');
+    super({ ...props });
   }
 
   init() {
-    this.children.profileLink = new BaseLink({
-      content: '',
-      href: '../signUp/signUp.pug',
+    this.children.profileLink = new Link({
+      content: 'Профиль',
+      to: '/profile',
       extraClass: 'sidebar__link',
     });
-    this.children.searchLink = new Input({
-      name: 'search',
-      type: 'text',
-      placeholder: 'Поиск',
-    });
-    this.children.userChat1 = new UserChats({
-      href: 'img',
-      name: 'Dean',
-      message: 'whats up!',
-      time: '11:12',
-      newMessageCount: 3,
+    this.children.addChat = new Button({
+      type: 'submit',
+      content: 'Создать чат',
+      btnClass: 'create-chat',
       events: {
-        click: () => {
-          if (
-            document.getElementsByClassName('empty-chat')[0].style.display !==
-            'none'
-          ) {
-            document.getElementsByClassName('empty-chat')[0].style.display =
-              'none';
-            document.getElementsByClassName('messages')[0].style.display =
-              'block';
-          } else {
-            document.getElementsByClassName('empty-chat')[0].style.display =
-              'flex';
-            document.getElementsByClassName('messages')[0].style.display =
-              'none';
-          }
+        click: async () => {
+          await ChatsController.create('test chat');
         },
       },
     });
-    this.children.userChat2 = new UserChats({
-      href: 'img',
-      name: 'Fox',
-      message: 'yo',
-      time: '11:42',
-      newMessageCount: 1,
+    this.children.chats = this.createChats(this.props);
+    this.children.addLink = new Input({
+      name: 'search',
+      type: 'text',
+      placeholder: 'Добавить пользователя по id',
+    });
+    this.children.addUserToChat = new Button({
+      type: 'submit',
+      content: 'Добавить',
       events: {
-        click: () => {
-          if (
-            document.getElementsByClassName('empty-chat')[0].style.display !==
-            'none'
-          ) {
-            document.getElementsByClassName('empty-chat')[0].style.display =
-              'none';
-            document.getElementsByClassName('messages')[0].style.display =
-              'block';
-          } else {
-            document.getElementsByClassName('empty-chat')[0].style.display =
-              'flex';
-            document.getElementsByClassName('messages')[0].style.display =
-              'none';
-          }
+        click: async () => {
+          const input = this.children.addLink as Input;
+          const addUserId = input.getValue();
+          ChatsController.addUserToChat(
+            store.getState().selectedChat,
+            addUserId,
+          );
+          input.setValue('');
         },
       },
     });
   }
+  protected componentDidUpdate(
+    oldProps: SidebarProps,
+    newProps: SidebarProps,
+  ): boolean {
+    this.children.chats = this.createChats(newProps) as any;
 
+    return true;
+  }
+
+  private createChats(props: SidebarProps) {
+    return props.chats.map((data) => {
+      return new UserChats({
+        ...data,
+        events: {
+          click: () => {
+            ChatsController.selectChat(data.id);
+          },
+        },
+      });
+    });
+  }
   render() {
     return this.compile(template, this.props);
   }
 }
+
+const withChats = withStore((state) => ({ chats: [...(state.chats || [])] }));
+
+export const Sidebar = withChats(SidebarBase);

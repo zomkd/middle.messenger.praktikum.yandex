@@ -1,9 +1,11 @@
 import { Button } from '../../../components/buttons/button-mixin';
 import { Block } from '../../../utils/block/block';
 import { Input } from '../../../components/inputs/input-mixin';
-import { BaseLink } from '../../../components/links/link-mixin';
+// import { BaseLink } from '../../../components/links/link-mixin';
+import { Link } from '../../../components/links/link-mixin';
 import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
+import AuthController from '../../../controllers/AuthController';
 import template from './signIn.pug';
 import './signIn.scss';
 
@@ -13,7 +15,8 @@ interface SignInProps {
 
 export class SignIn extends Block {
   constructor(props: SignInProps) {
-    super('main', props);
+    // super('main', props);
+    super(props);
   }
 
   init() {
@@ -50,14 +53,17 @@ export class SignIn extends Block {
       },
     });
 
-    this.children.link = new BaseLink({
+    this.children.link = new Link({
       content: 'Нет аккаунта?',
-      href: 'src/views/auth/signUp/signUp.pug',
+      to: '/signup',
     });
   }
   onSubmit(e) {
     const fields = ['login', 'password'];
-    serializer(e, fields);
+    let dataForm: any = {};
+    dataForm = serializer(e, fields);
+    console.log(dataForm);
+    AuthController.signin(dataForm);
   }
 
   render() {

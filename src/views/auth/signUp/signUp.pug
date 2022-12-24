@@ -1,6 +1,4 @@
-extends ../../../layouts/main-layout/main-layout.pug
-
-block content
+div.auth-layout
     main.signUp
         form(class='signUp__block' action='../../chat/chat.html')
             .signUp__block-title
@@ -15,5 +13,5 @@ block content
                 | !{repeatPassword}
             .signUp__block-auth-btn
                 | !{button}
-            .signUp__block-signUp
-                | !{link}
+            //- .signUp__block-signUp
+            //-     | !{link}

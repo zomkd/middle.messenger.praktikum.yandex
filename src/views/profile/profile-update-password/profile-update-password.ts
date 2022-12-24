@@ -3,13 +3,14 @@ import { ProfileCardInput } from '../../../components/inputs/profile-inputs/prof
 import { Button } from '../../../components/buttons/button-mixin';
 import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
+import UserController from '../../../controllers/UserController';
 import template from './profile-update-password.pug';
 import '../../../components/profile-card/profile-card-mixin.scss';
 import './profile-update-password.scss';
 
 export class ProfileUpdatePassword extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
   init() {
     this.children.oldPassword = new ProfileCardInput({
@@ -17,7 +18,6 @@ export class ProfileUpdatePassword extends Block {
       type: 'password',
       label: 'Старый пароль',
       error: 'Неверный паорль',
-      body: 'temp@a.ru',
       is_input: true,
       events: {
         focusout: (event: Event) => validateBlock(event),
@@ -29,7 +29,6 @@ export class ProfileUpdatePassword extends Block {
       type: 'password',
       error: 'Недостаточное количество символов',
       label: 'Новый пароль',
-      body: 'ivan',
       is_input: true,
       events: {
         focusout: (event: Event) => validateBlock(event),
@@ -41,7 +40,6 @@ export class ProfileUpdatePassword extends Block {
       type: 'password',
       label: 'Повтороите новый пароль',
       error: 'Пароли не совпадают',
-      body: 'iv',
       is_input: true,
       events: {
         focusout: (event: Event) => validateBlock(event),
@@ -59,8 +57,12 @@ export class ProfileUpdatePassword extends Block {
   }
 
   onSubmit(e) {
-    const fields = ['oldPassword', 'newPassword', 'repeatPassword'];
+    const fields = ['oldPassword', 'newPassword'];
     serializer(e, fields);
+    let dataForm: any = {};
+    dataForm = serializer(e, fields);
+    console.log(dataForm);
+    UserController.password(dataForm);
   }
 
   render() {

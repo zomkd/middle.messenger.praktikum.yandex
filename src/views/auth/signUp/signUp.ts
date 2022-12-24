@@ -1,9 +1,10 @@
 import { Block } from '../../../utils/block/block';
 import { Button } from '../../../components/buttons/button-mixin';
 import { Input } from '../../../components/inputs/input-mixin';
-import { BaseLink } from '../../../components/links/link-mixin';
+import { Link } from '../../../components/links/link-mixin';
 import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
+import AuthController from '../../../controllers/AuthController';
 import template from './signUp.pug';
 import './signUp.scss';
 
@@ -13,7 +14,7 @@ interface SignUpProps {
 
 export class SignUp extends Block {
   constructor(props: SignUpProps) {
-    super('main', props);
+    super(props);
   }
 
   init() {
@@ -110,9 +111,9 @@ export class SignUp extends Block {
       },
     });
 
-    this.children.link = new BaseLink({
+    this.children.link = new Link({
       content: 'Войти',
-      href: '../../chat/chat.pug',
+      to: '/messanger',
     });
   }
 
@@ -128,6 +129,10 @@ export class SignUp extends Block {
       'repeatPassword',
     ];
     serializer(e, fields);
+    let dataForm: any = {};
+    dataForm = serializer(e, fields);
+    console.log(dataForm);
+    AuthController.signup(dataForm);
   }
 
   render() {

@@ -1,6 +1,12 @@
 import { Block } from '../../utils/block/block';
 import { ProfileCardInput } from '../inputs/profile-inputs/profile-input-mixin';
-import { BaseLink } from '../links/link-mixin';
+import { Link } from '../links/link-mixin';
+import AuthController from '../../controllers/AuthController';
+import UserController from '../../controllers/UserController';
+import { Avatar } from '../avatar/avatar';
+import store from '../../store/store';
+import { Button } from '../buttons/button-mixin';
+import { withStore } from '../../hocs/withStore';
 import template from './profile-card-mixin.pug';
 import './profile-card-mixin.scss';
 
@@ -8,80 +14,102 @@ interface ProfileCardProps {
   userInfoName: string;
   img: string;
 }
-
 export class ProfileCard extends Block {
   constructor(props: ProfileCardProps) {
-    super('main', props);
-    this.element!.classList.add('profile-card');
+    super(props);
   }
 
   init() {
+    this.children.avatar = new Avatar({
+      img:
+        this.props.avatar === null
+          ? ''
+          : `https://ya-praktikum.tech/api/v2/resources${
+              store.getState().user.data.avatar
+            }`,
+      events: {
+        change: (e: any) => {
+          e.preventDefault();
+          const formData = new FormData();
+          const input: any = document.querySelector('#avatar');
+          formData.append('avatar', input?.files[0]);
+          UserController.avatar(formData);
+        },
+      },
+    });
     this.children.email = new ProfileCardInput({
       name: 'email',
       type: 'text',
       label: 'Почта',
-      body: 'temp@a.ru',
+      body: store.getState().user.data.email,
     });
     this.children.login = new ProfileCardInput({
       name: 'login',
       type: 'text',
       label: 'Логин',
-      body: 'ivan',
+      body: store.getState().user.data.login,
     });
-    this.children.name = new ProfileCardInput({
-      name: 'name',
+    this.children.firstName = new ProfileCardInput({
+      name: 'first_name',
       type: 'text',
       label: 'Имя',
-      body: 'iv',
+      body: store.getState().user.data.first_name,
     });
     this.children.secondName = new ProfileCardInput({
       name: 'second_name',
       type: 'text',
       label: 'Фамилия',
-      body: 'test',
+      body: store.getState().user.data.second_name,
     });
-    this.children.username = new ProfileCardInput({
-      name: 'username',
+    this.children.displayName = new ProfileCardInput({
+      name: 'display_name',
       type: 'text',
       label: 'Имя в чате',
-      body: 'tester',
+      body: store.getState().user.data.display_name,
     });
     this.children.phone = new ProfileCardInput({
       name: 'phone',
       type: 'text',
       label: 'Телефон',
-      body: '+7 (123) 123 12 32',
+      body: store.getState().user.data.phone,
     });
 
-    this.children.updateInfoLink = new BaseLink({
+    this.children.updateInfoLink = new Link({
       content: 'Изменить данные',
-      href: '../../views/profile/profile-update-info/profile-update-info.pug',
+      to: '/settings',
       extraClass: 'profile__link',
     });
-    this.children.updatePasswordLink = new BaseLink({
+    this.children.updatePasswordLink = new Link({
       content: 'Изменить пароль',
-      href: '../../views/profile/profile-update-password/profile-update-password.pug',
+      to: '/change-password',
       extraClass: 'profile__link',
     });
-    this.children.exitLink = new BaseLink({
+    this.children.exitLink = new Button({
       content: 'Выйти',
-      href: '../../views/chat/chat.pug',
-      extraClass: 'profile__link_exit',
+      events: {
+        click: () => {
+          AuthController.logout();
+        },
+      },
+      btnClass: 'profile__link_exit',
     });
   }
 
-  // onSubmit() {
-  //   const values = Object
-  //     .values(this.children)
-  //     .filter(child => child instanceof Input)
-  //     .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
-
-  //   const data = Object.fromEntries(values);
-
-  //   AuthController.signin(data as SignupData);
-  // }
-
+  protected componentDidUpdate(oldProps: any, newProps: any): boolean {
+    (this.children.avatar as Avatar).setProps({
+      img:
+        newProps.avatar === null
+          ? ''
+          : `https://ya-praktikum.tech/api/v2/resources${
+              store.getState().user.data.avatar
+            }`,
+    });
+  }
   render() {
     return this.compile(template, this.props);
   }
 }
+
+const withUser = withStore((store) => ({ ...store.user }));
+
+export const ProfilePage = withUser(ProfileCard);

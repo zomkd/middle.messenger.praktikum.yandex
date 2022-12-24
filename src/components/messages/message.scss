@@ -1,0 +1,27 @@
+@import '../../assets/styles/colors';
+/* stylelint-disable */
+.message {
+  padding: 15px 10px;
+  margin: 15px 0;
+  border-radius: 11px;
+  border-bottom-right-radius: 0;
+  box-sizing: border-box;
+  padding: 11px;
+  margin: 5px;
+  max-width: 150px;
+  max-width: 400px;
+  background: #e9ffff;
+  align-self: flex-start;
+  border-radius: 6px;
+}
+
+.message--mine {
+  border-radius: 11px;
+  border-bottom-right-radius: 0;
+  background-color: $color-message;
+  box-sizing: border-box;
+  padding: 11px;
+  margin: 5px;
+  align-self: flex-end;
+  max-width: 400px;
+}

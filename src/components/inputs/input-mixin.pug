@@ -1,3 +1,5 @@
-label(class=`input__label ${name}`)=label || ''
-input(type=`${type}` name=`${name}` class=`input__field-${name}` placeholder=`${placeholder || ''}` required autofocus)
-label(class=`error error-${name}`)=error || ''
+div.input
+    if label
+        label(class=`input__label ${name}`)=label || ''
+    input(type=`${type}` name=`${name}` class=`input__field-${name}` placeholder=`${placeholder || ''}` required autofocus)
+    label(class=`error error-${name}`)=error || ''

@@ -1,19 +1,23 @@
-.profile-card__user-info
-    .profile-card__user-info-avatar=img
-    .profile-card__user-info-name=userInfoName
-
-.profile-card__block
-    .profile-card__fields 
-        | !{email}
-        | !{login}
-        | !{firstName}
-        | !{secondName}
-        | !{username}
-    
-    .profile-card__actions
-        .profile-card__field
-            | !{updateInfoLink}
-        .profile-card__field
-            | !{updatePasswordLink}
-        .profile-card__field    
-            | !{exitLink}
+.profile-layout
+    section.profile-layout__sidebar
+        a(href='/messanger').profile-layout__sidebar-btn
+                p Назад
+    section.profile-layout__main
+        .profile-card
+            .profile-card__user-info
+                | !{avatar}
+            .profile-card__block
+                .profile-card__fields 
+                    | !{email}
+                    | !{login}
+                    | !{firstName}
+                    | !{secondName}
+                    | !{displayName}
+                    | !{phone}
+                .profile-card__actions
+                    .profile-card__field
+                        | !{updateInfoLink}
+                    .profile-card__field
+                        | !{updatePasswordLink}
+                    .profile-card__field    
+                        | !{exitLink}

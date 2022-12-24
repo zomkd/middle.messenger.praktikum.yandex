@@ -1,11 +1,12 @@
 import { Block } from '../../utils/block/block';
 import template from './link-mixin.pug';
+import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 import './link-mixin.scss';
 
-interface LinkProps {
+interface LinkProps extends PropsWithRouter {
   extraClass?: string;
   content?: string;
-  href?: string;
+  to?: string;
   imgSrc?: string;
   events?: {
     click: () => void;
@@ -14,10 +15,21 @@ interface LinkProps {
 
 export class BaseLink extends Block<LinkProps> {
   constructor(props: LinkProps) {
-    super('div', props);
+    super({
+      ...props,
+      events: {
+        click: () => this.navigate(),
+      },
+    });
+  }
+
+  navigate() {
+    this.props.router.go(this.props.to!);
   }
 
   render() {
     return this.compile(template, this.props);
   }
 }
+
+export const Link = withRouter(BaseLink);

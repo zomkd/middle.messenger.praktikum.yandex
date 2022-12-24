@@ -4,8 +4,8 @@ import './button-mixin.scss';
 
 interface ButtonProps {
   type?: string;
-  content: string;
-  btnClass: string;
+  content?: string;
+  btnClass?: string;
   events?: {
     click: () => void;
   };
@@ -13,8 +13,10 @@ interface ButtonProps {
 
 export class Button extends Block<ButtonProps> {
   constructor(props: ButtonProps) {
-    super('div', props);
-    this.element!.classList.add('form-button');
+    // super('div', props);
+    super(props);
+
+    // this.element!.classList.add('form-button');
   }
 
   render() {

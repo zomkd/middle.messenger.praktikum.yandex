@@ -1,6 +1,7 @@
-span.profile-card__field__title= label 
-if is_input 
-    input(type=`${type}` name=name class=`input__field profile-card__field__body` value=`${body || ''}` required autofocus)
-    label(class=`error error-${name}`)=error || ''
-else
-    span.profile-card__field__body= body 
+.profile-card__field
+    span.profile-card__field__title= label 
+    if is_input 
+        input(type=`${type}` name=name class=`input__field profile-card__field__body` value=`${body || ''}` required autofocus)
+        label(class=`error error-${name}`)=error || ''
+    else
+        span.profile-card__field__body= body 

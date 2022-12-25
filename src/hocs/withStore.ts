@@ -1,8 +1,18 @@
 import { isEqual } from '../router/helpers';
 import store, { StoreEvents } from '../store/store';
+import { Block } from '../utils/block/block';
+import { User } from '../api/AuthAPI';
+import { ChatInfo } from '../api/ChatsAPI';
+import { Message } from '../controllers/MessagesController';
 
-export function withStore(mapStateToProps: (state) => any) {
-  return function wrap(Component) {
+interface State {
+  user?: User;
+  chats?: ChatInfo[];
+  messages?: Record<number, Message[]>;
+  selectedChat?: number;
+}
+export function withStore(mapStateToProps: (state: State) => any) {
+  return function wrap(Component: typeof Block) {
     let previousState: any = null;
 
     return class WithStore extends Component {

@@ -11,12 +11,18 @@ class ChatsController {
   }
 
   async create(title: string) {
+    try {
     await this.api.create(title);
 
     this.fetchChats();
+    } catch (e: any) {
+      store.set('user.error', e);
+    }
+    
   }
 
   async fetchChats() {
+    try {
     await AuthController.fetchUser();
     const chats = await this.api.read();
 
@@ -24,24 +30,40 @@ class ChatsController {
       const token = await this.getToken(chat.id);
 
       await MessagesController.connect(chat.id, token);
-    });
-
+    }
+    )
+    
     store.set('chats', chats);
-    console.log(store);
+  } catch (e: any) {
+    store.set('user.error', e);
+  };
+
   }
 
   addUserToChat(id: number, userId: number) {
+    try {
     this.api.addUsers(id, [userId]);
+  } catch (e: any) {
+    store.set('user.error', e);
+  }
   }
 
   async delete(id: number) {
+    try {
     await this.api.delete(id);
 
     this.fetchChats();
+  } catch (e: any) {
+    store.set('user.error', e);
+  }
   }
 
   getToken(id: number) {
+    try {
     return this.api.getToken(id);
+  } catch (e: any) {
+    store.set('user.error', e);
+  }
   }
 
   selectChat(id: number) {
@@ -50,6 +72,3 @@ class ChatsController {
 }
 
 export default new ChatsController();
-const controller = new ChatsController();
-
-// export default controller;

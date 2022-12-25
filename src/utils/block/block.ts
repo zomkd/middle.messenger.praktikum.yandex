@@ -1,6 +1,6 @@
 import { EventBus } from '../event-bus/event-bus';
 import { v4 as uuidv4 } from 'uuid';
-// public id = uuidv4();
+
 export class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
@@ -15,12 +15,6 @@ export class Block<P extends Record<string, any> = any> {
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
-  /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
-   *
-   * @returns {void}
-   */
   constructor(propsWithChildren: P) {
     const eventBus = new EventBus();
 

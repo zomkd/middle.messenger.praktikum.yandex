@@ -106,9 +106,8 @@ export class ProfileUpdateInfo extends Block {
       'phone',
       'display_name',
     ];
-    let dataForm: any = {};
+    let dataForm = {};
     dataForm = serializer(e, fields);
-    console.log(dataForm);
     UserController.profile(dataForm);
   }
 
@@ -116,6 +115,3 @@ export class ProfileUpdateInfo extends Block {
     return this.compile(template, this.props);
   }
 }
-// const withUser = withStore((store) => ({ ...store.user }))
-
-// export const ProfilePage = withUser(ProfileUpdateInfo);

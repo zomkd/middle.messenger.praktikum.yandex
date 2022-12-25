@@ -5,7 +5,7 @@ import './input-mixin.scss';
 interface InputProps {
   name: string;
   type: string;
-  label?: string | undefined;
+  label?: string;
   placeholder: string;
   error?: string;
   events?: {

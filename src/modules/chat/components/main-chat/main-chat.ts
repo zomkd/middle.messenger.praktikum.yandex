@@ -24,11 +24,11 @@ export class MainChatBase extends Block {
   }
 
   init() {
-    // AuthController.fetchUser()
+    AuthController.fetchUser()
     this.children.header = new MainChatHeader({
       username: store.getState().user.data.first_name,
       img:
-        store.getState().user.data.avatar === null
+        !store.getState().user.data.avatar
           ? ''
           : `https://ya-praktikum.tech/api/v2/resources${
               store.getState().user.data.avatar
@@ -79,20 +79,19 @@ export class MainChatBase extends Block {
   }
 }
 const withSelectedChatMessages = withStore((state) => {
-  const a = Object.keys(store.getState()).length === 0;
-  const selectedChatId = state.selectedChat || null;
+  const selectedChatId = state.selectedChat;
   if (!selectedChatId) {
     return {
       messages: [],
       selectedChat: undefined,
-      userId: state?.user.data.id || 0,
+      userId: state.user.data.id || 0,
     };
   }
 
   return {
     messages: (state.messages || {})[selectedChatId] || [],
     selectedChat: state.selectedChat,
-    userId: state?.user?.data.id || 0,
+    userId: state?.user.data.id || 0,
   };
 });
 

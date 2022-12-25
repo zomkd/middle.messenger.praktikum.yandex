@@ -15,7 +15,6 @@ interface SignInProps {
 
 export class SignIn extends Block {
   constructor(props: SignInProps) {
-    // super('main', props);
     super(props);
   }
 
@@ -60,9 +59,8 @@ export class SignIn extends Block {
   }
   onSubmit(e) {
     const fields = ['login', 'password'];
-    let dataForm: any = {};
+    let dataForm = {};
     dataForm = serializer(e, fields);
-    console.log(dataForm);
     AuthController.signin(dataForm);
   }
 

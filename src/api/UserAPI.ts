@@ -44,9 +44,6 @@ export class UserAPI extends BaseAPI {
     return this.http.get(`/${id}`);
   }
 
-  create = undefined;
-  delete = undefined;
-  read = undefined;
 }
 
 export default new UserAPI();

@@ -21,12 +21,11 @@ export class ProfileCard extends Block {
 
   init() {
     this.children.avatar = new Avatar({
-      img:
-        this.props.avatar === null
-          ? ''
-          : `https://ya-praktikum.tech/api/v2/resources${
-              store.getState().user.data.avatar
-            }`,
+      img: !this.props.avatar
+        ? ''
+        : `https://ya-praktikum.tech/api/v2/resources${
+            store.getState().user.data.avatar
+          }`,
       events: {
         change: (e: any) => {
           e.preventDefault();

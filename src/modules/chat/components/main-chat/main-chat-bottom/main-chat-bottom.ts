@@ -61,7 +61,6 @@ export class MainChatBottom extends Block {
       }
     });
     if (isFormValid) {
-      console.log(formData);
     }
   }
 

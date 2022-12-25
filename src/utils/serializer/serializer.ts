@@ -18,7 +18,6 @@ export function serializer(event: Event, fields: string[]): any {
     }
   });
   if (isFormValid) {
-    console.log(formData);
     return formData;
   }
   return;

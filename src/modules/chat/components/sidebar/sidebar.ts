@@ -5,6 +5,7 @@ import { Input } from '../../../../components/inputs/input-mixin';
 import { UserChats } from './user-chats/user-chats';
 import store from '../../../../store/store';
 import ChatsController from '../../../../controllers/ChatsController';
+import AuthController from '../../../../controllers/AuthController';
 import { withStore } from '../../../../hocs/withStore';
 import { ChatInfo } from '../../../../api/ChatsAPI';
 import { Button } from '../../../../components/buttons/button-mixin';
@@ -18,6 +19,8 @@ class SidebarBase extends Block {
   }
 
   init() {
+    ChatsController.fetchChats();
+    AuthController.fetchUser();
     this.children.profileLink = new Link({
       content: 'Профиль',
       to: '/profile',

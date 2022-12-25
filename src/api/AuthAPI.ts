@@ -43,10 +43,6 @@ export class AuthAPI extends BaseAPI {
   logout() {
     return this.http.post('/logout');
   }
-
-  create = undefined;
-  update = undefined;
-  delete = undefined;
 }
 
 export default new AuthAPI();

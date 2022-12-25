@@ -2,8 +2,8 @@ import { Block } from '../../../../../utils/block/block';
 import template from './main-chat-header.pug';
 
 interface MainChatHeaderProps {
-  username?: any;
-  img?: any;
+  username?: string;
+  img?: string;
 }
 
 export class MainChatHeader extends Block {

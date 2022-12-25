@@ -129,9 +129,8 @@ export class SignUp extends Block {
       'repeatPassword',
     ];
     serializer(e, fields);
-    let dataForm: any = {};
+    let dataForm = {};
     dataForm = serializer(e, fields);
-    console.log(dataForm);
     AuthController.signup(dataForm);
   }
 

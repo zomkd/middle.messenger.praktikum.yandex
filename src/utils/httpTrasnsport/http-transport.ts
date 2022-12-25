@@ -13,7 +13,7 @@ type Options = {
   data?: any;
 };
 type HTTPMethod = (
-  path?: string | undefined,
+  path?: string,
   data?: unknown,
   options?: Options,
 ) => Promise<Response>;

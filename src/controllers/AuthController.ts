@@ -30,15 +30,13 @@ export class AuthController {
       router.go('/messanger');
     } catch (e: any) {
       store.set('user.error', e);
-    } finally {
-      store.set('user.isLoading', false);
     }
   }
 
   async fetchUser() {
     try {
       const user = await this.api.read();
-      store.set('user.data', user);
+      if (!user.reason) store.set('user.data', user);
     } catch (e: any) {
       store.set('user.error', e);
     }

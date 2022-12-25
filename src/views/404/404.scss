@@ -1,9 +1,17 @@
 @import '../../assets/styles/colors';
 @import '../../layouts/main-layout/main-layout';
 
+.error-message-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .error-message {
-  width: 12.5rem;
-  height: 12.5rem;
+  width: 14.5rem;
+  height: 14.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

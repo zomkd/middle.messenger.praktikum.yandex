@@ -29,11 +29,12 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.ChangePassword, ProfileUpdatePassword)
     .use(Routes.Page404, Page404)
     .use(Routes.Page500, Page500);
-
+  debugger;
   let isProtectedRoute = true;
 
   switch (window.location.pathname) {
     case Routes.Index:
+      break;
     case Routes.SignUp:
       isProtectedRoute = false;
       break;
@@ -45,7 +46,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     Router.start();
 
     if (!isProtectedRoute) {
-      Router.go(Routes.Index);
+      Router.go(Routes.Chat);
     }
   } catch (e) {
     Router.start();

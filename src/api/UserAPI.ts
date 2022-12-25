@@ -43,10 +43,6 @@ export class UserAPI extends BaseAPI {
   getUser(id: number): Promise<Array<User & { role: string }>> {
     return this.http.get(`/${id}`);
   }
-
-  create = undefined;
-  delete = undefined;
-  read = undefined;
 }
 
 export default new UserAPI();

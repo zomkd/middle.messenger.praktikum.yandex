@@ -24,15 +24,14 @@ export class MainChatBase extends Block {
   }
 
   init() {
-    AuthController.fetchUser()
+    AuthController.fetchUser();
     this.children.header = new MainChatHeader({
       username: store.getState().user.data.first_name,
-      img:
-        !store.getState().user.data.avatar
-          ? ''
-          : `https://ya-praktikum.tech/api/v2/resources${
-              store.getState().user.data.avatar
-            }`,
+      img: !store.getState().user.data.avatar
+        ? ''
+        : `https://ya-praktikum.tech/api/v2/resources${
+            store.getState().user.data.avatar
+          }`,
     });
     this.children.dialogs = this.createMessages(this.props);
     this.children.input = new Input({

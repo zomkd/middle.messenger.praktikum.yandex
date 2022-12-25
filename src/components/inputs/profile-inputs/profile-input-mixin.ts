@@ -19,7 +19,6 @@ interface ProfileCardInputProps {
 export class ProfileCardInput extends Block {
   constructor(props: ProfileCardInputProps) {
     super(props);
-
   }
 
   render() {

@@ -43,7 +43,6 @@ export class UserAPI extends BaseAPI {
   getUser(id: number): Promise<Array<User & { role: string }>> {
     return this.http.get(`/${id}`);
   }
-
 }
 
 export default new UserAPI();

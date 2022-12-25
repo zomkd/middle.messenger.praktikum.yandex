@@ -19,8 +19,8 @@ class SidebarBase extends Block {
   }
 
   init() {
-    ChatsController.fetchChats()
-    AuthController.fetchUser()
+    ChatsController.fetchChats();
+    AuthController.fetchUser();
     this.children.profileLink = new Link({
       content: 'Профиль',
       to: '/profile',

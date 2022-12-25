@@ -37,7 +37,7 @@ class Router {
     const route = this.getRoute(pathname);
 
     if (!route) {
-      const errorPage = new Route("/error-404", Page404, this.rootQuery);
+      const errorPage = new Route('/error-404', Page404, this.rootQuery);
       console.log(errorPage);
       errorPage.render();
       return;

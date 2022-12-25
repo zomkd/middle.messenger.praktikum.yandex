@@ -43,7 +43,6 @@ export class ChatsAPI extends BaseAPI {
 
     return response.token;
   }
-
 }
 
 export default new ChatsAPI();

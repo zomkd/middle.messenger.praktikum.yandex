@@ -59,8 +59,8 @@ export class SignIn extends Block {
   }
   onSubmit(e) {
     const fields = ['login', 'password'];
-    let dataForm = {};
-    dataForm = serializer(e, fields);
+
+    const dataForm = serializer(e, fields);
     AuthController.signin(dataForm);
   }
 

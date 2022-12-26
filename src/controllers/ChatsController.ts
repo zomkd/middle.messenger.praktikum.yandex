@@ -44,6 +44,13 @@ class ChatsController {
       store.set('user.error', e);
     }
   }
+  deleteUserToChat(id: number, userId: number) {
+    try {
+      this.api.deleteUsers(id, [userId]);
+    } catch (e: any) {
+      store.set('user.error', e);
+    }
+  }
 
   async delete(id: number) {
     try {

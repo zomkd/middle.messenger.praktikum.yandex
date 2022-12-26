@@ -106,8 +106,7 @@ export class ProfileUpdateInfo extends Block {
       'phone',
       'display_name',
     ];
-    let dataForm = {};
-    dataForm = serializer(e, fields);
+    const dataForm = serializer(e, fields);
     UserController.profile(dataForm);
   }
 

@@ -51,9 +51,10 @@ export default class HttpTransport {
     });
   };
 
-  public delete: HTTPMethod = (path: string) => {
+  public delete: HTTPMethod = (path: string, data: unknown) => {
     return this.request<Response>(this.endpoint + path, {
       method: Method.DELETE,
+      data,
     });
   };
   private request<Response>(

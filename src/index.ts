@@ -5,6 +5,7 @@ import { SignUp } from './views/auth/signUp/signUp';
 import { Chat } from './views/chat/chat';
 import { Profile } from './views/profile/profile';
 import { ProfilePage } from './components/profile-card/profile-card-mixin';
+import store from './store/store';
 import { ProfileUpdateInfo } from './views/profile/profile-update-info/profile-update-info';
 import { ProfileUpdatePassword } from './views/profile/profile-update-password/profile-update-password';
 import './controllers/MessagesController';
@@ -29,7 +30,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.ChangePassword, ProfileUpdatePassword)
     .use(Routes.Page404, Page404)
     .use(Routes.Page500, Page500);
-  debugger;
   let isProtectedRoute = true;
 
   switch (window.location.pathname) {
@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     Router.start();
 
-    if (!isProtectedRoute) {
+    if (!isProtectedRoute || store.getState().user.data) {
       Router.go(Routes.Chat);
     }
   } catch (e) {

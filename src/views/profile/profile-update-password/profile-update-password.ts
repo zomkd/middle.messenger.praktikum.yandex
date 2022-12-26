@@ -59,8 +59,7 @@ export class ProfileUpdatePassword extends Block {
   onSubmit(e) {
     const fields = ['oldPassword', 'newPassword'];
     serializer(e, fields);
-    let dataForm = {};
-    dataForm = serializer(e, fields);
+    const dataForm = serializer(e, fields);
     UserController.password(dataForm);
   }
 

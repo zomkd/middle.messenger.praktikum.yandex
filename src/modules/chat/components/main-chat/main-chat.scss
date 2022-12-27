@@ -1,5 +1,9 @@
 @import './main-chat-header/main-chat-header';
 @import './main-chat-bottom/main-chat-bottom';
+<<<<<<< HEAD
+=======
+
+>>>>>>> sprint_3
 /* stylelint-disable */
 .main-chat {
   &__header,
@@ -18,6 +22,7 @@
     font-weight: 500;
     font-size: 0.75rem;
     line-height: 0.75rem;
+    overflow-y: scroll;
   }
 }
 

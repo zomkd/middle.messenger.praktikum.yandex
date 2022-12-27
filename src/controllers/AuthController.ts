@@ -14,7 +14,7 @@ export class AuthController {
       store.set('user.error', null);
       await this.api.signin(data);
       await this.fetchUser();
-      router.go('/messanger');
+      if (!store.user.data) router.go('/messanger');
     } catch (e: any) {
       store.set('user.error', e);
     }

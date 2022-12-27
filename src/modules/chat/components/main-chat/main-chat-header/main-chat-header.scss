@@ -9,7 +9,12 @@
   height: 100%;
   border-bottom: 1px solid $color-border;
 }
-
+.delete-user {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
 .main-chat-header__items {
   display: flex;
   width: 100%;
@@ -18,6 +23,7 @@
 .main-chat-header__user-info {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .main-chat-header__icon {
@@ -32,21 +38,4 @@
   font-weight: 600;
   font-size: 0.8125rem;
   line-height: 0.8125rem;
-}
-
-.main-chat-header__user-action-btn {
-  margin-left: auto;
-  align-self: center;
-  margin-right: 0.6875rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 0.9375rem;
-}
-
-.main-chat-header__user-action-dot {
-  width: 0.1875rem;
-  height: 0.1875rem;
-  background: $color-dark;
-  border-radius: 50%;
 }

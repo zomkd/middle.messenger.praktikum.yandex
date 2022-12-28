@@ -1,18 +1,17 @@
-extends ../../../layouts/profile-layout/profile-layout.pug
-
-block profile-card
-    .profile-card
-        section.profile-card__user-info
-            .profile-card__user-info-avatar <img src = "~/src/assets/icons/empty-avatar-icon.svg" alt="empty-avatar-icon"/>
-
-        form(class='profile-card__block' action='../../chat/chat.html')
-            .profile-card__fields 
-                | !{email}
-                | !{login}
-                | !{firstName}
-                | !{secondName}
-                | !{username}
-                | !{phone}
-            .profile-card__actions
-                .profile-card__actions-btn
-                    | !{button}
+.profile-layout
+    section.profile-layout__sidebar
+        a(href='/messanger').profile-layout__sidebar-btn
+                p Назад
+    section.profile-layout__main
+        .profile-card
+            form(class='profile-card__block' action='../../chat/chat.html')
+                .profile-card__fields 
+                    | !{email}
+                    | !{login}
+                    | !{firstName}
+                    | !{secondName}
+                    | !{displayName}
+                    | !{phone}
+                .profile-card__actions
+                    .profile-card__actions-btn
+                        | !{button}

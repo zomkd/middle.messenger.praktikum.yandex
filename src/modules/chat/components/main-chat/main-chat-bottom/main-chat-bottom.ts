@@ -11,8 +11,8 @@ interface MainChatBottomProps {
 }
 export class MainChatBottom extends Block {
   constructor(props: MainChatBottomProps) {
-    super('footer', props);
-    this.element!.classList.add('main-chat__bottom');
+    super(props);
+    // this.element!.classList.add('main-chat__bottom');
   }
 
   validateBlock(event: Event): void {
@@ -61,7 +61,6 @@ export class MainChatBottom extends Block {
       }
     });
     if (isFormValid) {
-      console.log(formData);
     }
   }
 

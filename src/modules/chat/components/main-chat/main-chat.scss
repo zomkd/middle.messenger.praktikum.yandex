@@ -1,7 +1,7 @@
 @import './main-chat-header/main-chat-header';
 @import './main-chat-bottom/main-chat-bottom';
-@import './main-chat-dialogs/main-chat-dialogs';
 
+/* stylelint-disable */
 .main-chat {
   &__header,
   &__bottom {
@@ -14,5 +14,58 @@
 
   &__dialogs {
     height: 89%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    overflow-y: scroll;
+  }
+}
+
+.no-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.main-chat-bottom__block {
+  display: flex;
+  align-items: center;
+  margin-right: 1.25rem;
+  margin-left: 1.25rem;
+  width: 100%;
+  border-top: 1px solid $color-border;
+}
+
+.main-chat-bottom__items {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.main-chat-bottom__message-panel {
+  width: 95%;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  background: $color-bg-avatar;
+  display: flex;
+  align-items: center;
+  border-radius: 1.875rem;
+
+  &_text {
+    margin-left: 1rem;
+  }
+  input {
+    border: 0;
+    background: $color-bg-avatar;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .invalid {
+    color: $color-red;
   }
 }

@@ -1,5 +1,36 @@
 @import '../../assets/styles/colors';
 /* stylelint-disable */
+@import '../../assets/styles/colors';
+@import '../../assets/styles/base';
+
+.profile-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+
+  &__sidebar {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color-bg-sidebar;
+    border-right: 0.0625rem $color-border solid;
+
+    // &-btn {
+    //   transform: rotate(-180deg);
+    // }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+}
 .profile-card {
   max-width: 31.875rem;
   max-height: 40rem;
@@ -19,16 +50,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    &-avatar {
-      width: 8.125rem;
-      height: 8.125rem;
-      border-radius: 50%;
-      background-color: $color-bg-avatar;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
 
     &-name {
       font-weight: 600;

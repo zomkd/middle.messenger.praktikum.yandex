@@ -5,7 +5,9 @@
   height: 100%;
   min-width: 18.125rem;
   border-bottom: 0.0625rem $color-border solid;
-
+  // &--selected {
+  //   background-color: aqua;
+  // }
   .user-chats__container {
     display: flex;
     justify-content: space-between;

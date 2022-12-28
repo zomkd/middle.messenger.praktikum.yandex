@@ -1,9 +1,7 @@
-extends ../../layouts/main-layout/main-layout.pug
-
-block content
+.error-message-wrapper
     .error-message
-        .error-message__code=errorMessageCode
-        .error-message__text=errorMessageText
-        .error-message__link
-            | !{link}
+            .error-message__code=404
+            .error-message__text='Страница не найдена'
+            .error-message__link
+                | !{link}
 

@@ -1,16 +1,21 @@
-header.sidebar__header
-    div.sidebar__header-profile
-        div.sidebar__header-profile-block
-            div(class='sidebar__header-profile-block-text')
-                a(href='../profile/profile.pug' class='sidebar__header-profile-block-link')=title
-            i.sidebar__header-profile-block-arrow
-    div.sidebar__header-search
-        div.sidebar__header-search-block
-            div.sidebar__header-search-block-icon 
-                .search-icon 
-                    img(src=img alt='icon')
-                | !{searchLink}
-            div.sidebar__header-search-block-text=search
-section.user-chats
-    | !{userChat1}
-    | !{userChat2}
+main.sidebar
+    header.sidebar__header
+        div.sidebar__header-profile
+            div.sidebar__header-profile-block
+                div(class='sidebar__header-profile-block-text')
+                | !{profileLink}
+                i.sidebar__header-profile-block-arrow
+        div.sidebar__header-search
+            div.sidebar__header-search-block
+                div.sidebar__header-search-block-icon 
+                    .search-icon 
+                        img(src=img alt='icon')
+                    | !{searchLink}
+                div.sidebar__header-search-block-text=search
+    .create-chat
+        | !{addChat}
+    .add-user-to-chat
+        | !{addLink}
+        | !{addUserToChat}
+    section.user-chats
+        | !{chats}

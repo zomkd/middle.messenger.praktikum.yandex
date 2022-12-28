@@ -6,10 +6,12 @@ import { serializer } from '../../../utils/serializer/serializer';
 import template from './profile-update-info.pug';
 import '../../../components/profile-card/profile-card-mixin.scss';
 import './profile-update-info.scss';
+import store from '../../../store/store';
+import UserController from '../../../controllers/UserController';
 
 export class ProfileUpdateInfo extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
 
   init() {
@@ -17,7 +19,7 @@ export class ProfileUpdateInfo extends Block {
       name: 'email',
       type: 'text',
       label: 'Почта',
-      body: 'temp@a.ru',
+      body: store.getState().user.data.email,
       is_input: true,
       error: 'Неверный формат',
       events: {
@@ -29,7 +31,7 @@ export class ProfileUpdateInfo extends Block {
       name: 'login',
       type: 'text',
       label: 'Логин',
-      body: 'ivan',
+      body: store.getState().user.data.login,
       is_input: true,
       error: 'Недостаточное количество символов или неверный формат',
       events: {
@@ -41,7 +43,7 @@ export class ProfileUpdateInfo extends Block {
       name: 'first_name',
       type: 'text',
       label: 'Имя',
-      body: 'iv',
+      body: store.getState().user.data.first_name,
       is_input: true,
       error: 'Недостаточное количество символов или неверный формат',
       events: {
@@ -53,7 +55,7 @@ export class ProfileUpdateInfo extends Block {
       name: 'second_name',
       type: 'text',
       label: 'Фамилия',
-      body: 'test',
+      body: store.getState().user.data.second_name,
       error: 'Недостаточное количество символов или неверный формат',
       is_input: true,
       events: {
@@ -61,11 +63,11 @@ export class ProfileUpdateInfo extends Block {
         focusin: (event: Event) => validateBlock(event),
       },
     });
-    this.children.username = new ProfileCardInput({
-      name: 'username',
+    this.children.displayName = new ProfileCardInput({
+      name: 'display_name',
       type: 'text',
       label: 'Имя в чате',
-      body: 'tester',
+      body: store.getState().user.data.display_name,
       is_input: true,
       error: 'Недостаточное количество символов или неверный формат',
       events: {
@@ -77,7 +79,7 @@ export class ProfileUpdateInfo extends Block {
       name: 'phone',
       type: 'text',
       label: 'Телефон',
-      body: '+7 (123) 123 12 32',
+      body: store.getState().user.data.phone,
       error: 'Недостаточное количество символов или неверный формат',
       is_input: true,
       events: {
@@ -96,9 +98,16 @@ export class ProfileUpdateInfo extends Block {
   }
 
   onSubmit(e) {
-    console.log('sad');
-    const fields = ['email', 'login', 'first_name', 'second_name', 'phone'];
-    serializer(e, fields);
+    const fields = [
+      'email',
+      'login',
+      'first_name',
+      'second_name',
+      'phone',
+      'display_name',
+    ];
+    const dataForm = serializer(e, fields);
+    UserController.profile(dataForm);
   }
 
   render() {

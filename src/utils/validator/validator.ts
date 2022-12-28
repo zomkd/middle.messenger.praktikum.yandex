@@ -9,6 +9,7 @@ export enum FieldName {
   OldPassword = 'oldPassword',
   NewPassword = 'newPassword',
   Message = 'message',
+  DisplayName = 'display_name',
 }
 
 export function validate(element: HTMLInputElement) {

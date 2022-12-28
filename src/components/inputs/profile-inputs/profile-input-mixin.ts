@@ -18,8 +18,7 @@ interface ProfileCardInputProps {
 
 export class ProfileCardInput extends Block {
   constructor(props: ProfileCardInputProps) {
-    super('div', props);
-    this.element!.classList.add('profile-card__field');
+    super(props);
   }
 
   render() {

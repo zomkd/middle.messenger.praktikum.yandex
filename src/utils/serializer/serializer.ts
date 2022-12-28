@@ -1,6 +1,6 @@
 import { validate } from '../validator/validator';
 
-export function serializer(event: Event, fields: string[]) {
+export function serializer(event: Event, fields: string[]): any {
   event.preventDefault();
   const formData: { [index: string]: any } = {};
   let isFormValid = true;
@@ -18,6 +18,7 @@ export function serializer(event: Event, fields: string[]) {
     }
   });
   if (isFormValid) {
-    console.log(formData);
+    return formData;
   }
+  return;
 }

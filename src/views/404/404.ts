@@ -12,7 +12,7 @@ interface ErrorProps {
 
 export class Page404 extends Block {
   constructor(props: ErrorProps) {
-    super('main', props);
+    super(props);
   }
   init() {
     this.children.link = new BaseLink({

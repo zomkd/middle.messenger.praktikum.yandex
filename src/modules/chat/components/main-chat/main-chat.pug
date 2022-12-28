@@ -1,8 +1,21 @@
-header.main-chat__header
-    | !{header}
+main.main-chat
+    if selectedChat
+        header.main-chat__header
+            | !{header}
+            
+        main.main-chat__dialogs
+            | !{dialogs}
 
-main.main-chat__dialogs
-    | !{dialogs}
-
-section.main-chat__bottom    
-    | !{bottom}
+        section.main-chat__bottom    
+            //- | !{input}
+            //- | !{sendLink}
+            section.main-chat-bottom__block
+                .main-chat-bottom__items
+                    .main-chat-bottom__message-panel
+                        .main-chat-bottom__message-panel_text 
+                        | !{input}
+                    .main-chat-bottom__send-btn 
+                        | !{sendLink}
+    else 
+        .no-selected
+            p Выберите чат

@@ -5,7 +5,7 @@ import './profile.scss';
 
 export class Profile extends Block {
   constructor() {
-    super('main', {});
+    super({});
   }
   init() {
     this.children.profileCard = new ProfileCard({

@@ -1,9 +1,12 @@
-.user-chats__container
-    .user-chats__img=href
-    .user-chats__content
-        .user-chats__content-name=name
-        .user-chats__content-message=message
-    .user-chats__notify
-        .user-chats__notify-time=time
-        .user-chats__notify-new-messages=newMessageCount
-    
+
+.user-chats__block
+    .user-chats__container
+        .user-chats__img=id
+        .user-chats__content
+            if last_message
+                .user-chats__content-name=last_message.user.first_name
+                .user-chats__content-message=last_message.content
+            else
+                .user-chats__content-name=''
+                .user-chats__content-message=''
+            

@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const PugPlugin = require('pug-plugin');
 module.exports = {
   mode: 'development',
   entry: './src/index.ts',

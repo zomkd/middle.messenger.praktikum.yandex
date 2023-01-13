@@ -19,6 +19,5 @@
   "include": ["./**/*.ts", "server.js", "server.js"],
   "ts-node": {
     "files": true
-    
   }
 }

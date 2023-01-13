@@ -3,7 +3,8 @@ import Router from '../router/router';
 
 export function withRouter(Component: typeof Block) {
   type Props = typeof Component extends typeof Block<
-    infer P extends Record<string, any>>
+    infer P extends Record<string, any>
+  >
     ? P
     : any;
 

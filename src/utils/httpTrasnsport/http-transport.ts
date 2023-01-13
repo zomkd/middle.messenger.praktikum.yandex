@@ -28,7 +28,7 @@ export default class HttpTransport {
 
   public get: HTTPMethod = (path = '/') => {
     return this.request<Response>(this.endpoint + path);
-  }
+  };
 
   public post: HTTPMethod = (path: string | undefined, data?: unknown) => {
     return this.request<Response>(this.endpoint + path, {

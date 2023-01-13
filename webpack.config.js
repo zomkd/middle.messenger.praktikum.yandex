@@ -12,7 +12,7 @@ module.exports = {
     compress: true,
     port: 3000,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -20,7 +20,7 @@ module.exports = {
     clean: true,
   },
   resolve: {
-    extensions: ['.ts', '.js', '.json']
+    extensions: ['.ts', '.js', '.json'],
   },
   module: {
     rules: [
@@ -31,23 +31,23 @@ module.exports = {
             loader: 'ts-loader',
             options: {
               configFile: path.resolve(__dirname, 'tsconfig.json'),
-              ignoreDiagnostics: [2322,2339,2345,18048,2416],
+              ignoreDiagnostics: [2322, 2339, 2345, 18048, 2416],
             },
           },
         ],
-        exclude: /(node_modules)/
+        exclude: /(node_modules)/,
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
-          "css-loader",
-          "resolve-url-loader",
+          'style-loader',
+          'css-loader',
+          'resolve-url-loader',
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
-              implementation: require("sass"),
-              sourceMap: true
+              implementation: require('sass'),
+              sourceMap: true,
             },
           },
         ],
@@ -63,11 +63,12 @@ module.exports = {
       {
         test: /\.pug$/,
         loader: '@webdiscus/pug-loader',
-      }
-    ]
+      },
+    ],
   },
   plugins: [
-  new HtmlWebpackPlugin({
-    template: 'index.html',
-  })],
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+    }),
+  ],
 };

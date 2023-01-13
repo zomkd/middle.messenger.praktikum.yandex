@@ -12,7 +12,10 @@ export interface SignupData {
   password: string;
   phone: string;
 }
-
+export interface SigninData {
+  login: string;
+  password: string;
+}
 export interface User {
   id: number;
   first_name: string;

@@ -92,12 +92,12 @@ export class ProfileUpdateInfo extends Block {
       btnClass: 'save-changes',
       content: 'Сохранить',
       events: {
-        click: (e) => this.onSubmit(e),
+        click: (e: Event) => this.onSubmit(e),
       },
     });
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
     const fields = [
       'email',
       'login',

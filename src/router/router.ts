@@ -1,5 +1,5 @@
 import { Route } from './route';
-import { Block } from 'src/utils/block/block';
+import { Block } from '../utils/block/block';
 import { Page404 } from '../views/404/404';
 
 class Router {
@@ -37,7 +37,7 @@ class Router {
     const route = this.getRoute(pathname);
 
     if (!route) {
-      const errorPage = new Route('/error-404', Page404, this.rootQuery);
+      const errorPage = new Route('/error-404', Page404 as any, this.rootQuery);
       console.log(errorPage);
       errorPage.render();
       return;
@@ -57,7 +57,10 @@ class Router {
 
     this._onRoute(pathname);
   }
-
+  public reset() {
+    this._routes = [];
+    this._currentRoute = null;
+  }
   public back() {
     this._history.back();
   }

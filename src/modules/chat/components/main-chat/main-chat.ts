@@ -83,7 +83,7 @@ const withSelectedChatMessages = withStore((state) => {
     return {
       messages: [],
       selectedChat: undefined,
-      userId: state.user.data.id || 0,
+      userId: state?.user.data.id || 0,
     };
   }
 

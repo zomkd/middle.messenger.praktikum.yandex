@@ -27,7 +27,7 @@ export class ProfileCard extends Block {
             store.getState().user.data.avatar
           }`,
       events: {
-        change: (e: any) => {
+        change: (e: Event) => {
           e.preventDefault();
           const formData = new FormData();
           const input: any = document.querySelector('#avatar');
@@ -94,7 +94,7 @@ export class ProfileCard extends Block {
     });
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any): boolean {
+  protected componentDidUpdate(oldProps: any, newProps: any) {
     (this.children.avatar as Avatar).setProps({
       img:
         newProps.avatar === null

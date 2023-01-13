@@ -36,14 +36,14 @@ export class MainChatBottom extends Block {
     });
     this.children.attachLink = new BaseLink({});
     this.children.sendLink = new BaseLink({
-      href: '',
+      to: '',
       events: {
-        click: (e) => this.onSubmit(e),
+        click: (e: Event) => this.onSubmit(e),
       },
     });
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
     e.preventDefault();
     const inputs = ['message'];
     const formData: { [index: string]: any } = {};

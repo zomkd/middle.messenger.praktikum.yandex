@@ -4,15 +4,15 @@ import './profile-input-mixin.scss';
 
 interface ProfileCardInputProps {
   name: string;
-  body: string;
+  body?: string;
   label: string;
   is_input?: boolean;
   placeholder?: string;
   type: string;
   error?: string;
   events?: {
-    focusin: () => void;
-    focusout: () => void;
+    focusin: (e: Event) => void;
+    focusout: (e: Event) => void;
   };
 }
 

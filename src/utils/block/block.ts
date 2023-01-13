@@ -10,7 +10,7 @@ export class Block<P extends Record<string, any> = any> {
   } as const;
 
   public id = uuidv4();
-  protected props: P;
+  public props: P;
   public children: Record<string, Block | Block[]>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
@@ -97,13 +97,13 @@ export class Block<P extends Record<string, any> = any> {
     });
   }
 
-  private _componentDidUpdate(oldProps: P, newProps: P) {
-    if (this.componentDidUpdate(oldProps, newProps)) {
+  private _componentDidUpdate(oldProps?: P, newProps?: P) {
+    if (this.componentDidUpdate(oldProps!, newProps!)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
-
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  /* @ts-ignore */
+  protected componentDidUpdate(oldProps?: P, newProps?: P) {
     return true;
   }
 

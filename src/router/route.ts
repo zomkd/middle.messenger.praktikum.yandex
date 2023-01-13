@@ -1,4 +1,4 @@
-import { Block } from 'src/utils/block/block';
+import { Block } from '../utils/block/block';
 import { isEqual } from './helpers';
 
 function render(query: string, block: Block) {
@@ -44,7 +44,7 @@ export class Route {
 
   render() {
     if (!this._block) {
-      this._block = new this._blockClass('div', {});
+      this._block = new this._blockClass({});
 
       render(this._props, this._block!);
       return;

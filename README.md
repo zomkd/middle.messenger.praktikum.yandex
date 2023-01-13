@@ -11,6 +11,10 @@ https://tubular-florentine-b06955.netlify.app/
 npm i
 npm run start
 ```
+## Node Version
+```
+v16.18.0
+```
 ## 3ий спринт
 Добавлена редактирование аватра
 

@@ -7,7 +7,7 @@ interface ButtonProps {
   content?: string;
   btnClass?: string;
   events?: {
-    click: () => void;
+    click: (e: Event) => void;
   };
 }
 

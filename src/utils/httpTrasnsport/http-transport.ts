@@ -26,9 +26,9 @@ export default class HttpTransport {
     this.endpoint = `${HttpTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response>(path = '/'): Promise<Response> {
+  public get: HTTPMethod = (path = '/') => {
     return this.request<Response>(this.endpoint + path);
-  }
+  };
 
   public post: HTTPMethod = (path: string | undefined, data?: unknown) => {
     return this.request<Response>(this.endpoint + path, {
@@ -37,21 +37,21 @@ export default class HttpTransport {
     });
   };
 
-  public put: HTTPMethod = (path: string, data: unknown) => {
+  public put: HTTPMethod = (path: string | undefined, data: unknown) => {
     return this.request<Response>(this.endpoint + path, {
       method: Method.PUT,
       data,
     });
   };
 
-  public patch: HTTPMethod = (path: string, data: unknown) => {
+  public patch: HTTPMethod = (path: string | undefined, data: unknown) => {
     return this.request<Response>(this.endpoint + path, {
       method: Method.PATCH,
       data,
     });
   };
 
-  public delete: HTTPMethod = (path: string, data: unknown) => {
+  public delete: HTTPMethod = (path: string | undefined, data: unknown) => {
     return this.request<Response>(this.endpoint + path, {
       method: Method.DELETE,
       data,

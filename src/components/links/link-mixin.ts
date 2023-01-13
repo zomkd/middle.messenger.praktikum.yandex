@@ -9,7 +9,7 @@ interface LinkProps extends PropsWithRouter {
   to?: string;
   imgSrc?: string;
   events?: {
-    click: () => void;
+    click: (e: Event) => void;
   };
 }
 
@@ -18,13 +18,13 @@ export class BaseLink extends Block<LinkProps> {
     super({
       ...props,
       events: {
-        click: () => this.navigate(),
+        click: (e: Event) => this.navigate(),
       },
     });
   }
 
   navigate() {
-    this.props.router.go(this.props.to!);
+    this.props.router!.go(this.props.to!);
   }
 
   render() {
@@ -32,4 +32,4 @@ export class BaseLink extends Block<LinkProps> {
   }
 }
 
-export const Link = withRouter(BaseLink);
+export const Link = withRouter(BaseLink as any);

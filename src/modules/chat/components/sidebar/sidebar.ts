@@ -58,6 +58,7 @@ class SidebarBase extends Block {
       },
     });
   }
+
   protected componentDidUpdate(
     oldProps: SidebarProps,
     newProps: SidebarProps,
@@ -68,17 +69,19 @@ class SidebarBase extends Block {
   }
 
   private createChats(props: SidebarProps) {
-    return props.chats.map((data) => {
-      return new UserChats({
-        ...data,
-        events: {
-          click: () => {
-            ChatsController.selectChat(data.id);
+    return props.chats.map(
+      (data) =>
+        new UserChats({
+          ...data,
+          events: {
+            click: () => {
+              ChatsController.selectChat(data.id);
+            },
           },
-        },
-      });
-    });
+        }),
+    );
   }
+
   render() {
     return this.compile(template, this.props);
   }

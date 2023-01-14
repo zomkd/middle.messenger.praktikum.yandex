@@ -17,8 +17,11 @@ function render(query: string, block: Block) {
 
 export class Route {
   private _pathname: string;
+
   private _blockClass: typeof Block;
+
   private _block: InstanceType<typeof Block> | null;
+
   private _props: string;
 
   constructor(pathname: string, view: typeof Block, props: string) {
@@ -47,7 +50,6 @@ export class Route {
       this._block = new this._blockClass({});
 
       render(this._props, this._block!);
-      return;
     }
   }
 }

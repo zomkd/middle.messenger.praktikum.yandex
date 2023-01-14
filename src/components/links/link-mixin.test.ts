@@ -1,6 +1,6 @@
-import { BaseLink as Link } from './link-mixin';
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { BaseLink as Link } from './link-mixin';
 
 describe('Link', () => {
   it('should render component', () => {
@@ -35,7 +35,7 @@ describe('Link', () => {
       to,
       router: routerMock as any,
     });
-    const element = instance.element;
+    const { element } = instance;
     element?.click();
 
     expect(routerMock.go.firstArg).to.eq(to);

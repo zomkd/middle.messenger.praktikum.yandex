@@ -14,12 +14,14 @@ export class Page404 extends Block {
   constructor(props: ErrorProps) {
     super(props);
   }
+
   init() {
     this.children.link = new Link({
       content: 'Назад к чатам',
       to: '/',
     });
   }
+
   render() {
     return this.compile(template, this.props);
   }

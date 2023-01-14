@@ -18,6 +18,7 @@ export class Input extends Block<InputProps> {
   constructor(props: InputProps) {
     super(props);
   }
+
   public setValue(value: string) {
     return ((this.element as HTMLInputElement).childNodes[0]!.value = value);
   }
@@ -29,6 +30,7 @@ export class Input extends Block<InputProps> {
   public getValue() {
     return (this.element as HTMLInputElement).childNodes[0]!.value;
   }
+
   render() {
     return this.compile(template, this.props);
   }

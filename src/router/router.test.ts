@@ -1,6 +1,6 @@
-import Router from './router';
 import { expect } from 'chai';
 import sinon from 'sinon';
+import Router from './router';
 
 describe('test router', () => {
   const originalForward = window.history.forward;

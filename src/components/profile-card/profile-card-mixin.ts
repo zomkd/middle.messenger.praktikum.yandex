@@ -21,7 +21,7 @@ export class ProfileCard extends Block {
 
   init() {
     this.children.avatar = new Avatar({
-      img: !this.props.avatar
+      img: !store.getState().user.data.avatar
         ? ''
         : `https://ya-praktikum.tech/api/v2/resources${
             store.getState().user.data.avatar
@@ -104,6 +104,7 @@ export class ProfileCard extends Block {
             }`,
     });
   }
+
   render() {
     return this.compile(template, this.props);
   }

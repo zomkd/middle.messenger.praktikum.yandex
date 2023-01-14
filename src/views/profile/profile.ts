@@ -7,6 +7,7 @@ export class Profile extends Block {
   constructor() {
     super({});
   }
+
   init() {
     this.children.profileCard = new ProfileCard({
       userInfoName: 'testers',

@@ -56,6 +56,7 @@ export class SignIn extends Block {
       to: '/signup',
     });
   }
+
   onSubmit(e: Event) {
     const fields = ['login', 'password'];
 

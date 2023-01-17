@@ -1,4 +1,5 @@
 import BaseAPI from './BaseAPI';
+
 export interface PasswordData {
   oldPassword: string;
   newPassword: string;

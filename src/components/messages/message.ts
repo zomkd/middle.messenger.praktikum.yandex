@@ -1,6 +1,7 @@
 import { Block } from '../../utils/block/block';
 import template from './message.pug';
 import './message.scss';
+
 interface MessageProps {
   content: string;
   isMine: boolean;

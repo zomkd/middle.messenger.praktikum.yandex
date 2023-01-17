@@ -12,6 +12,7 @@ export class ProfileUpdatePassword extends Block {
   constructor() {
     super({});
   }
+
   init() {
     this.children.oldPassword = new ProfileCardInput({
       name: 'oldPassword',

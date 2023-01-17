@@ -6,6 +6,8 @@
 https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1
 ## Netlify
 https://tubular-florentine-b06955.netlify.app/
+## Render
+https://yagram.onrender.com/
 ## Установка
 ```sh
 npm i
@@ -15,12 +17,12 @@ npm run start
 ```
 v16.18.0
 ```
-## 3ий спринт
-Добавлена редактирование аватра
+## 4ий спринт
+Сборка через Webpack
 
-Добавлена реал-тайм чат
+Добавлены тесты
 
-Добавлено редактирование пользователей
+Добавлена сборка через Docker
 
-Получение данных из API
+Проект развернут на Render
 

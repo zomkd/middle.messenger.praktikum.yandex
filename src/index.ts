@@ -10,6 +10,7 @@ import { ProfileUpdatePassword } from './views/profile/profile-update-password/p
 import './controllers/MessagesController';
 import AuthController from './controllers/AuthController';
 import Router from './router/router';
+
 enum Routes {
   Index = '/',
   SignUp = '/signup',

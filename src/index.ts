@@ -3,7 +3,6 @@ import { Page500 } from './views/500/500';
 import { SignIn } from './views/auth/signIn/signIn';
 import { SignUp } from './views/auth/signUp/signUp';
 import { Chat } from './views/chat/chat';
-import { Profile } from './views/profile/profile';
 import { ProfilePage } from './components/profile-card/profile-card-mixin';
 import store from './store/store';
 import { ProfileUpdateInfo } from './views/profile/profile-update-info/profile-update-info';
@@ -11,6 +10,7 @@ import { ProfileUpdatePassword } from './views/profile/profile-update-password/p
 import './controllers/MessagesController';
 import AuthController from './controllers/AuthController';
 import Router from './router/router';
+
 enum Routes {
   Index = '/',
   SignUp = '/signup',

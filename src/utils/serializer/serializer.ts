@@ -20,5 +20,4 @@ export function serializer(event: Event, fields: string[]): any {
   if (isFormValid) {
     return formData;
   }
-  return;
 }

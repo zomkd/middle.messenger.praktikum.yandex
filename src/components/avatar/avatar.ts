@@ -5,7 +5,7 @@ import './avatar.scss';
 interface AvatarProps {
   img?: string;
   events?: {
-    change: () => void;
+    change: (e: Event) => void;
   };
 }
 

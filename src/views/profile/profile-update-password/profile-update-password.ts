@@ -12,6 +12,7 @@ export class ProfileUpdatePassword extends Block {
   constructor() {
     super({});
   }
+
   init() {
     this.children.oldPassword = new ProfileCardInput({
       name: 'oldPassword',
@@ -51,12 +52,12 @@ export class ProfileUpdatePassword extends Block {
       btnClass: 'save-changes-password',
       content: 'Сохранить',
       events: {
-        click: (e) => this.onSubmit(e),
+        click: (e: Event) => this.onSubmit(e),
       },
     });
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
     const fields = ['oldPassword', 'newPassword'];
     serializer(e, fields);
     const dataForm = serializer(e, fields);

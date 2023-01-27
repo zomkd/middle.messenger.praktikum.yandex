@@ -1,7 +1,6 @@
 import { Button } from '../../../components/buttons/button-mixin';
 import { Block } from '../../../utils/block/block';
 import { Input } from '../../../components/inputs/input-mixin';
-// import { BaseLink } from '../../../components/links/link-mixin';
 import { Link } from '../../../components/links/link-mixin';
 import { validateBlock } from '../../../utils/validator/validator';
 import { serializer } from '../../../utils/serializer/serializer';
@@ -48,7 +47,7 @@ export class SignIn extends Block {
       content: 'Авторизоваться',
       btnClass: 'sign-in-btn',
       events: {
-        click: (e) => this.onSubmit(e),
+        click: (e: Event) => this.onSubmit(e),
       },
     });
 
@@ -57,7 +56,8 @@ export class SignIn extends Block {
       to: '/signup',
     });
   }
-  onSubmit(e) {
+
+  onSubmit(e: Event) {
     const fields = ['login', 'password'];
 
     const dataForm = serializer(e, fields);

@@ -50,12 +50,15 @@ export class MainChatBase extends Block {
         click: () => {
           const input = this.children.input as Input;
           const message = input.getValue();
-          MessagesController.sendMessage(this.props.selectedChat!, message);
+          if (message.length > 0) {
+            MessagesController.sendMessage(this.props.selectedChat!, message);
+          }
           input.setValue('');
         },
       },
     });
   }
+
   async componentDidMount() {
     await AuthController.fetchUser();
   }
@@ -68,11 +71,13 @@ export class MainChatBase extends Block {
 
     return true;
   }
+
   private createMessages(props: MessengerProps) {
-    return props.messages.map((data) => {
-      return new Message({ ...data, isMine: props.userId === data.user_id });
-    });
+    return props.messages.map(
+      (data) => new Message({ ...data, isMine: props.userId === data.user_id }),
+    );
   }
+
   render() {
     return this.compile(template, this.props);
   }
@@ -83,7 +88,7 @@ const withSelectedChatMessages = withStore((state) => {
     return {
       messages: [],
       selectedChat: undefined,
-      userId: state.user.data.id || 0,
+      userId: state?.user.data.id || 0,
     };
   }
 

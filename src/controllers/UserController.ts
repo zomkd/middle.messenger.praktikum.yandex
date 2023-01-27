@@ -20,6 +20,7 @@ export class UserController {
       store.set('user.error', e);
     }
   }
+
   async password(data: PasswordData) {
     try {
       store.set('user.error', null);
@@ -30,6 +31,7 @@ export class UserController {
       store.set('user.error', e);
     }
   }
+
   async avatar(data: FormData) {
     try {
       await this.api.avatar(data);

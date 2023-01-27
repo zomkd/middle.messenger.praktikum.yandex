@@ -44,6 +44,7 @@ class ChatsController {
       store.set('user.error', e);
     }
   }
+
   deleteUserToChat(id: number, userId: number) {
     try {
       this.api.deleteUsers(id, [userId]);

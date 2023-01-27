@@ -107,7 +107,7 @@ export class SignUp extends Block {
       content: 'Зарегистрироваться',
       btnClass: 'sign-up',
       events: {
-        click: (e) => this.onSubmit(e),
+        click: (e: Event) => this.onSubmit(e),
       },
     });
 
@@ -117,7 +117,7 @@ export class SignUp extends Block {
     });
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
     e.preventDefault();
     const fields = [
       'email',

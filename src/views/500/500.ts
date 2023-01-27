@@ -12,14 +12,16 @@ interface ErrorProps {
 
 export class Page500 extends Block {
   constructor(props: ErrorProps) {
-    super('main', props);
+    super(props);
   }
+
   init() {
     this.children.link = new BaseLink({
       content: 'Назад к чатам',
-      href: '/',
+      to: '/',
     });
   }
+
   render() {
     return this.compile(template, this.props);
   }

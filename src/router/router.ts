@@ -1,11 +1,14 @@
 import { Route } from './route';
-import { Block } from 'src/utils/block/block';
+import { Block } from '../utils/block/block';
 import { Page404 } from '../views/404/404';
 
 class Router {
   private static __instance: Router;
+
   private _routes: Route[] = [];
+
   private _currentRoute: Route | null = null;
+
   private _history = window.history;
 
   constructor(private readonly rootQuery: string) {
@@ -24,6 +27,7 @@ class Router {
 
     return this;
   }
+
   public start() {
     window.onpopstate = (event: PopStateEvent) => {
       const target = event.currentTarget as Window;
@@ -33,11 +37,12 @@ class Router {
 
     this._onRoute(window.location.pathname);
   }
+
   private _onRoute(pathname: string) {
     const route = this.getRoute(pathname);
 
     if (!route) {
-      const errorPage = new Route('/error-404', Page404, this.rootQuery);
+      const errorPage = new Route('/error-404', Page404 as any, this.rootQuery);
       console.log(errorPage);
       errorPage.render();
       return;
@@ -56,6 +61,11 @@ class Router {
     this._history.pushState({}, '', pathname);
 
     this._onRoute(pathname);
+  }
+
+  public reset() {
+    this._routes = [];
+    this._currentRoute = null;
   }
 
   public back() {
